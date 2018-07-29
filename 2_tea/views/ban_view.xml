@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form view for Technical Service -->
+    <record id="tea_ban_form_view" model="ir.ui.view" >
+        <field name="name">tea.ban.form.view</field>
+        <field name="model">tea.ban</field>
+        <field name="arch" type="xml">
+            <form string="Thông tin vị trí bàn phục vụ">
+                <!--<header>-->
+                <!--</header>-->
+                <sheet>
+                    <group>
+                        <h1><field name="name" placeholder="Số bàn" /></h1>
+                    </group>
+                    <group>
+                        <field name="description" placeholder="Mô tả thêm cho đẹp" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="tea_ban_kanban_view">
+        <field name="name">tea.ban.kanban.view</field>
+        <field name="model">tea.ban</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="color" class="o_kanban_small_column">
+                <field name="color"/>
+                <field name="name"/>
+                <field name="description"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
+
+                            <div class="o_dropdown_kanban dropdown" groups="base.group_user">
+                                <a class="dropdown-toggle btn" data-toggle="dropdown" href="#" >
+                                    <span class="fa fa-bars fa-lg"/>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <t t-if="widget.editable"><li><a type="set_cover">Set Cover Image</a></li></t>
+                                    <t t-if="widget.editable"><li><a type="edit">Edit Task</a></li></t>
+                                    <t t-if="widget.deletable"><li><a type="delete">Delete</a></li></t>
+                                    <li><ul class="oe_kanban_colorpicker" data-field="color"/></li>
+                                </ul>
+                            </div>
+                            <div class="oe_kanban_content">
+                                <div>
+                                    <field name="name"/>
+                                </div>
+                                <div>
+                                    <strong><field name="description"/></strong>
+                                </div>
+                            </div>
+                            <div class="oe_clear"></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="tea_ban_tree_view" model="ir.ui.view">
+        <field name="name">tea.ban.tree.view</field>
+        <field name="model">tea.ban</field>
+        <field name="arch" type="xml">
+            <tree string="Danh sách bàn">
+                <field name="name" />
+                <field name="description" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action Windows -->
+    <record id="action_tea_ban" model="ir.actions.act_window">
+        <field name="name">Bàn phục vụ</field>
+        <field name="res_model">tea.ban</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+</odoo>
