@@ -29,13 +29,14 @@
         'views/food_view.xml',
         'views/ban_view.xml',
         'views/order_view.xml',
+        'views/order_mon_view.xml',
         'views/templates.xml',
         'menu/menu.xml',
 
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/demo.xml',
+        # 'demo/demo.xml',
     ],
     'installable': True,
     'application': True,

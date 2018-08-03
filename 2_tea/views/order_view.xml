@@ -6,18 +6,24 @@
         <field name="name">tea.order.form.view</field>
         <field name="model">tea.order</field>
         <field name="arch" type="xml">
-            <form string="Thông tin món">
+            <form string="Thông tin gọi món">
                 <!--<header>-->
                 <!--</header>-->
                 <sheet>
                     <group>
                         <h1><field name="ban"/></h1>
                     </group>
-                    <group>
-                        <field name="mon_an"/>
+                    <group string="Món ăn">
+                        <field name="mon_an" nolabel="1">
+                            <tree string="Danh sách Trà Sữa" editable="bottom">
+                                <field name="mon_an" />
+                                <field name="mon_them" widget="many2many_tags"/>
+                                <field name="description"/>
+                            </tree>
+                        </field>
                     </group>
-                    <group>
-                        <field name="description"/>
+                    <group string="Ghi chú thêm">
+                        <field name="description" nolabel="1"/>
                     </group>
                 </sheet>
             </form>
@@ -38,7 +44,7 @@
 
     <!-- Action Windows -->
     <record id="action_tea_order" model="ir.actions.act_window">
-        <field name="name">Thực Đơn</field>
+        <field name="name">Thông Tin Gọi Món</field>
         <field name="res_model">tea.order</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>

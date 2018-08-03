@@ -1,0 +1,11 @@
+<openerp>
+    <data>
+       <record id="available" model="tea.ban.status">
+         <field name="name">Trống</field>
+       </record>
+
+       <record id="busy" model="tea.ban.status">
+         <field name="name">Đang Phục Vụ</field>
+       </record>
+    </data>
+</openerp>
