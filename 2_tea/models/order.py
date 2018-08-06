@@ -8,6 +8,7 @@ class Order(models.Model):
     _rec_name = 'ban'
 
     ban = fields.Many2one("tea.ban", "Bàn", domain="[('status', '=', '0')]", required=True)
+    position = fields.Selection([('0', 'Trong nhà'), ('1', 'Gác'), ('2', 'Vườn')], "Khu vực", default="0")
     mon_an = fields.One2many("tea.order.mon", "order_id", "Món")
     description = fields.Text("Ghi Chú")
     color = fields.Integer("Color")
