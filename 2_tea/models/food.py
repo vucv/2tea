@@ -1,7 +1,6 @@
 # coding=utf-8
 from openerp import _,models,fields,api
 import random
-print(random.randint(0,9))
 
 
 class Food(models.Model):

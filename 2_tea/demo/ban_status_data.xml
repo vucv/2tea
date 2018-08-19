@@ -1,11 +1,26 @@
 <openerp>
     <data>
-       <record id="available" model="tea.ban.status">
-         <field name="name">Trống</field>
+       <record id="0" model="tea.ban.status">
+         <field name="name">Số có sẵn</field>
+       </record>
+       <record id="1" model="tea.ban.status">
+         <field name="name">Chờ pha chế</field>
+       </record>
+       <record id="2" model="tea.ban.status">
+         <field name="name">Đã phục vụ</field>
+       </record>
+       <record id="3" model="tea.ban.status">
+         <field name="name">Đã thanh toán</field>
        </record>
 
-       <record id="busy" model="tea.ban.status">
-         <field name="name">Đang Phục Vụ</field>
-       </record>
+        <record id="trong_nha" model="tea.order.position">
+            <field name="name">Trong nhà</field>
+        </record>
+        <record id="lau" model="tea.order.position">
+            <field name="name">Lầu</field>
+        </record>
+        <record id="vuon" model="tea.order.position">
+            <field name="name">Vườn</field>
+        </record>
     </data>
 </openerp>

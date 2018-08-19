@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<menuitem name="Trà Sứa 2Tea" id="menu_root" sequence="1"/>
+	<menuitem name="Trà Sữa 2Tea" id="menu_root" sequence="1"/>
 	<menuitem id="menu_reception" name="Tiếp Tân" parent="menu_root" sequence="1" action="action_tea_ban"/>
 	<menuitem id="menu_phache" name="Pha Chế" parent="menu_root" sequence="2" action="action_tea_order_mon"/>
 	<menuitem id="menu_order" name="Phục Vụ" parent="menu_root" sequence="3" action="action_tea_order"/>

@@ -86,6 +86,7 @@
         <field name="name">Danh sách order</field>
         <field name="res_model">tea.order.mon</field>
         <field name="view_type">form</field>
-        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain_force">[('is_thanh_toan', '=', False)]</field>
     </record>
 </odoo>

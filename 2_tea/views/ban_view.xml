@@ -8,16 +8,34 @@
         <field name="arch" type="xml">
             <form string="Thông tin vị trí bàn phục vụ">
                 <header>
-                    <button class="btn btn-primary" name="order" string="Gọi Món" type="object"/>
-                    <button class="btn btn-success" name="checkout" string="Tính Tiền" type="object"/>
+                    <button class="btn btn-primary" attrs="{'invisible':[('order_id','!=', False)]}"
+                            name="action_order" string="Gọi Món" type="object"/>
+                    <button class="btn btn-primary" attrs="{'invisible':[('order_id','==', False)]}"
+                            name="action_order" string="Gọi Thêm Món" type="object"/>
+                    <button class="btn btn-primary" attrs="{'invisible':[('order_id','==', False)]}"
+                            name="action_in_tem" string="In Tem" type="object"/>
+                    <button class="btn btn-danger" attrs="{'invisible':[('order_id','==', False)]}"
+                            name="action_checkout" string="Thanh toán &amp; in bill" type="object"/>
+                    <button class="btn btn-danger" attrs="{'invisible':[('is_thanh_toan','==', False)]}"
+                            name="action_reset_so" string="Thu hồi số" type="object"/>
                 </header>
                 <sheet>
                     <group>
                         <h1><field name="name" placeholder="Số bàn" /></h1>
-                    </group>
-                    <group>
-                        <field name="description" placeholder="Mô tả thêm cho đẹp" />
                         <field name="status"/>
+                        <field name="order_id" invisible="1"/>
+                        <field name="is_thanh_toan" invisible="1"/>
+                    </group>
+                    <group string="Món ăn">
+                        <field name="mon_an" nolabel="1">
+                            <tree string="Danh sách món">
+                                <field name="mon_an" />
+                                <field name="status" invisible="1"/>
+                                <field name="mon_them" widget="many2many_tags"/>
+                                <field name="sl"/>
+                                <field name="price" sum='Tổng cộng'/>
+                            </tree>
+                        </field>
                     </group>
                 </sheet>
             </form>
@@ -28,11 +46,15 @@
         <field name="name">tea.ban.kanban.view</field>
         <field name="model">tea.ban</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="status" class="o_kanban_small_column">
+            <kanban default_group_by="status" class="">
                 <field name="status"/>
                 <field name="color"/>
                 <field name="name"/>
+                <field name="mon_an"/>
+                <field name="order_id"/>
                 <field name="description"/>
+                <field name="position"/>
+                <field name="is_thanh_toan"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
@@ -42,23 +64,55 @@
                                     <span class="fa fa-bars fa-lg"/>
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <t t-if="widget.editable"><li><a type="set_cover">Set Cover Image</a></li></t>
-                                    <t t-if="widget.editable"><li><a type="edit">Edit Task</a></li></t>
-                                    <t t-if="widget.deletable"><li><a type="delete">Delete</a></li></t>
                                     <li><ul class="oe_kanban_colorpicker" data-field="color"/></li>
                                 </ul>
                             </div>
                             <div class="oe_kanban_content">
-                                <div>
+                                <h1 class="text-center">
                                     <field name="name"/>
-                                </div>
+                                </h1>
+                                <t t-if="record.mon_an.raw_value.length != 0">
+                                    <strong>Khu vực: </strong><t t-esc="record.position[1]"/>
+                                    <div>
+                                        <table class="table table-dark">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Món</th>
+                                                <th scope="col">SL</th>
+                                                <th scope="col">Giá</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <t t-foreach="record.mon_an.raw_value" t-as="mon">
+                                                <tr>
+                                                    <td><t t-esc="mon.mon_an[1]"/></td>
+                                                    <td><t t-esc="mon.sl"/></td>
+                                                    <td><t t-esc="mon.price"/></td>
+                                                </tr>
+
+                                            </t>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </t>
                                 <div>
                                     <strong><field name="description"/></strong>
                                 </div>
                             </div>
+                            <hr/>
                             <div class="oe_clear">
-                                <button type="button" class="btn btn-primary">Gọi Món</button>
-                                <button type="button" class="btn btn-success">Tính Tiền</button>
+                                <t t-if="record.is_thanh_toan.raw_value == true">
+                                    <button class="btn btn-primary" name="action_reset_so" type="object">Thu hồi số</button>
+                                </t>
+                                <t t-if="record.is_thanh_toan.raw_value == false">
+                                    <t t-if="record.mon_an.raw_value.length == 0">
+                                        <button class="btn btn-primary" name="action_order" type="object">Gọi Món</button>
+                                    </t>
+                                    <t t-if="record.mon_an.raw_value.length != 0">
+                                        <button class="btn btn-primary" name="action_order" type="object">Gọi Thêm Món</button>
+                                        <button type="button" class="btn btn-warning">Tính Tiền</button>
+                                    </t>
+                                </t>
                             </div>
                         </div>
                     </t>
@@ -81,7 +135,7 @@
 
     <!-- Action Windows -->
     <record id="action_tea_ban" model="ir.actions.act_window">
-        <field name="name">Bàn phục vụ</field>
+        <field name="name">Quầy Tiếp Tân</field>
         <field name="res_model">tea.ban</field>
         <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form</field>
