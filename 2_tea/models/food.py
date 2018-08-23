@@ -14,7 +14,13 @@ class Food(models.Model):
     is_print_temp = fields.Boolean("In tem lên ly")
     image = fields.Binary(string="Image")
     price = fields.Float("Giá")
+    price_xl = fields.Float("Giá size XL")
     color = fields.Integer("Color")
+    currency_id = fields.Many2one('res.currency', string='Currency')
+
+    _defaults = {
+        'currency_id': lambda self, cr, uid, c: self.pool['ir.model.data'].xmlid_to_object(cr, uid, 'base.VND', False),
+    }
 
     @api.model
     def create(self, vals):

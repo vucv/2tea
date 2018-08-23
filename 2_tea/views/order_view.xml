@@ -26,16 +26,19 @@
                             <tree string="Danh sách Trà Sữa" editable="bottom">
                                 <field name="mon_an" />
                                 <field name="sl" />
+                                <field name="size" />
                                 <field name="mon_them" widget="many2many_tags"/>
                                 <field name="description"/>
-                                <field name="price" sum='Tổng cộng'/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="price" sum='Tổng cộng' widget='monetary' options="{'currency_field': 'currency_id'}" />
                             </tree>
                         </field>
                     </group>
                     <group>
                         <group></group>
                         <group>
-                            <field name="price"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="price" widget='monetary' options="{'currency_field': 'currency_id'}"/>
                         </group>
                     </group>
                     <group string="Ghi chú thêm">
@@ -52,15 +55,18 @@
         <field name="model">tea.order</field>
         <field name="arch" type="xml">
             <tree string="Danh sách Trà Sữa">
+                <field name="id" />
                 <field name="ban" />
-                <field name="description" />
+                <field name="mon_an"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="price" sum='Tổng cộng' widget='monetary' options="{'currency_field': 'currency_id'}"/>
             </tree>
         </field>
     </record>
 
     <!-- Action Windows -->
     <record id="action_tea_order" model="ir.actions.act_window">
-        <field name="name">Thông Tin Gọi Món</field>
+        <field name="name">Order</field>
         <field name="res_model">tea.order</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>

@@ -22,5 +22,136 @@
         <record id="vuon" model="tea.order.position">
             <field name="name">Vườn</field>
         </record>
+
+        <record id="tea_food_1" model="tea.food">
+            <field name="name">Trà sữa trân châu đường đen</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">18000</field>
+            <field name="price_xl">20000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+        <record id="tea_food_2" model="tea.food">
+            <field name="name">Trà sữa Đất</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">18000</field>
+            <field name="price_xl">20000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+        <record id="tea_food_3" model="tea.food">
+            <field name="name">Trà sữa Hitea</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">18000</field>
+            <field name="price_xl">20000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+        <record id="tea_food_4" model="tea.food">
+            <field name="name">Trà sữa Hokkaido</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">18000</field>
+            <field name="price_xl">20000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+        <record id="tea_food_5" model="tea.food">
+            <field name="name">Trà sữa Socola</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">18000</field>
+            <field name="price_xl">20000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+        <record id="tea_food_6" model="tea.food">
+            <field name="name">Trà sữa Matcha đậu đỏ</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">18000</field>
+            <field name="price_xl">20000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+        <record id="tea_food_7" model="tea.food">
+            <field name="name">Trà sữa Khoai môn</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">18000</field>
+            <field name="price_xl">20000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+        <record id="tea_food_8" model="tea.food">
+            <field name="name">Trà đào</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">18000</field>
+            <field name="price_xl">20000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+
+        <record id="tea_food_9" model="tea.food">
+            <field name="name">Lục trà Machiato</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">22000</field>
+            <field name="price_xl">25000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+        <record id="tea_food_10" model="tea.food">
+            <field name="name">Hồng trà Machiato</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">22000</field>
+            <field name="price_xl">25000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+        <record id="tea_food_11" model="tea.food">
+            <field name="name">Đậu biếc Machiato</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">22000</field>
+            <field name="price_xl">25000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+        <record id="tea_food_12" model="tea.food">
+            <field name="name">Lục trà nhài kem Machiato</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">22000</field>
+            <field name="price_xl">25000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+        <record id="tea_food_13" model="tea.food">
+            <field name="name">Olong kem cheese</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">22000</field>
+            <field name="price_xl">25000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+        <record id="tea_food_14" model="tea.food">
+            <field name="name">Hồng trà thanh long kem cheese</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">22000</field>
+            <field name="price_xl">25000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+        <record id="tea_food_15" model="tea.food">
+            <field name="name">Olong Xoài kem cheese</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">22000</field>
+            <field name="price_xl">25000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+        <record id="tea_food_16" model="tea.food">
+            <field name="name">Lục trà dâu kem cheese</field>
+            <field name="is_required">True</field>
+            <field name="is_print_temp">True</field>
+            <field name="price">22000</field>
+            <field name="price_xl">25000</field>
+            <field name="currency_id" ref="base.VND"></field>
+        </record>
+
     </data>
 </openerp>

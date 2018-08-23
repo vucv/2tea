@@ -16,7 +16,9 @@
                     <group>
                         <field name="is_required" />
                         <field name="is_print_temp" />
-                        <field name="price" />
+                        <field name="currency_id"/>
+                        <field name="price" widget='monetary' options="{'currency_field': 'currency_id'}" />
+                        <field name="price_xl" widget='monetary' options="{'currency_field': 'currency_id'}" />
                     </group>
                     <group string="Hình đại diện">
                         <field name='image' widget="image" nolabel="1"/>
@@ -40,6 +42,7 @@
                 <field name="price"/>
                 <field name="is_required"/>
                 <field name="description"/>
+                <field name="currency_id"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
@@ -58,7 +61,8 @@
                                 </div>
                                 <div class="text-center">
                                     <h3><field name="name"/></h3>
-                                    <h1><field name="price"/></h1>
+                                    <h1>Size M: <field name="price" widget='monetary' options="{'currency_field': 'currency_id'}" /></h1>
+                                    <h1>Size L: <field name="price_xl" widget='monetary' options="{'currency_field': 'currency_id'}" /></h1>
                                 </div>
                             </div>
                             <div class="oe_clear">
@@ -79,7 +83,8 @@
                 <field name="image" widget="image"/>
                 <field name="name" />
                 <field name="is_required" />
-                <field name="price" />
+                <field name="currency_id" invisible="1"/>
+                <field name="price" widget='monetary' options="{'currency_field': 'currency_id'}" />
             </tree>
         </field>
     </record>

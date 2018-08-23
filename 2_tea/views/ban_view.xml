@@ -18,11 +18,12 @@
                             name="action_checkout" string="Thanh toán &amp; in bill" type="object"/>
                     <button class="btn btn-danger" attrs="{'invisible':[('is_thanh_toan','==', False)]}"
                             name="action_reset_so" string="Thu hồi số" type="object"/>
+                    <field name="status" widget="statusbar" clickable="True"/>
                 </header>
                 <sheet>
                     <group>
                         <h1><field name="name" placeholder="Số bàn" /></h1>
-                        <field name="status"/>
+
                         <field name="order_id" invisible="1"/>
                         <field name="is_thanh_toan" invisible="1"/>
                     </group>
@@ -33,7 +34,8 @@
                                 <field name="status" invisible="1"/>
                                 <field name="mon_them" widget="many2many_tags"/>
                                 <field name="sl"/>
-                                <field name="price" sum='Tổng cộng'/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="price" sum='Tổng cộng' widget='monetary' options="{'currency_field': 'currency_id'}" />
                             </tree>
                         </field>
                     </group>
@@ -72,7 +74,7 @@
                                     <field name="name"/>
                                 </h1>
                                 <t t-if="record.mon_an.raw_value.length != 0">
-                                    <strong>Khu vực: </strong><t t-esc="record.position[1]"/>
+                                    <strong>Khu vực: </strong><t t-if="record.position != false"><t t-esc="record.position.raw_value[1]"/></t>
                                     <div>
                                         <table class="table table-dark">
                                             <thead>
@@ -84,10 +86,10 @@
                                             </thead>
                                             <tbody>
                                             <t t-foreach="record.mon_an.raw_value" t-as="mon">
-                                                <tr>
+                                                <tr t-if="mon.mon_an">
                                                     <td><t t-esc="mon.mon_an[1]"/></td>
                                                     <td><t t-esc="mon.sl"/></td>
-                                                    <td><t t-esc="mon.price"/></td>
+                                                    <td><t t-esc="mon.price"/>đ</td>
                                                 </tr>
 
                                             </t>
@@ -101,8 +103,12 @@
                             </div>
                             <hr/>
                             <div class="oe_clear">
-                                <t t-if="record.is_thanh_toan.raw_value == true">
+                                <t t-if="record.status.raw_value[0] == 4">
                                     <button class="btn btn-primary" name="action_reset_so" type="object">Thu hồi số</button>
+                                </t>
+                                <t t-if="record.is_thanh_toan.raw_value == true and record.status.raw_value[0] != 4">
+                                    <span class="fa fa-check text-success"></span>
+                                    <span class="text-success">Đã Tính tiền</span>
                                 </t>
                                 <t t-if="record.is_thanh_toan.raw_value == false">
                                     <t t-if="record.mon_an.raw_value.length == 0">

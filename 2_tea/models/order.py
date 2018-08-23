@@ -14,10 +14,12 @@ class Order(models.Model):
     description = fields.Text("Ghi Chú")
     color = fields.Integer("Color")
     price = fields.Float("Thành tiền")
+    currency_id = fields.Many2one('res.currency', string='Currency')
     is_thanh_toan = fields.Boolean("Đã thanh toán")
 
     _defaults = {
         'position': lambda self, cr, uid, c: self.pool['ir.model.data'].xmlid_to_object(cr, uid, '2_tea.trong_nha', False),
+        'currency_id': lambda self, cr, uid, c: self.pool['ir.model.data'].xmlid_to_object(cr, uid, 'base.VND', False),
     }
 
     @api.one
@@ -49,7 +51,7 @@ class Order(models.Model):
     def write(self, vals):
         if "is_thanh_toan" in vals:
             for item in self:
-                item.mon_an.write({"is_thanh_toan": True})
+                item.mon_an.write({"is_thanh_toan": True, "status": 3})
         rec = super(Order, self).write(vals)
         return rec
 
@@ -57,24 +59,33 @@ class Order(models.Model):
 class OrderDetail(models.Model):
     _name = 'tea.order.mon'
     _description = 'Order Food'
-    _rec_name = 'ban'
+    _rec_name = 'mon_an'
 
     order_id = fields.Many2one("tea.order", "Đặt hàng", required=True)
     ban = fields.Many2one("tea.ban", "Bàn", related="order_id.ban", store=True)
     is_thanh_toan = fields.Boolean("Đã thanh toán")
-    status = fields.Selection([('0', 'Chưa làm'), ('1', 'Đang làm'), ('2', 'Xong')], "Trạng Thái", default="0")
+    size = fields.Selection([(1, 'M'),(2, 'L')], default=1)
+    status = fields.Selection([(1, 'Chưa làm'), (2, 'Đang làm'), (3, 'Xong')], "Trạng Thái", default=1)
     mon_an = fields.Many2one("tea.food", "Món", domain="[('is_required', '=', True)]", required=True)
     mon_them = fields.Many2many("tea.food", "tea_order_mon_them", "order_mon_id", "food_id", "Thêm",
                                 domain="[('is_required', '=', False)]")
     description = fields.Text("Ghi chú")
     price = fields.Float("Thành tiền")
+    currency_id = fields.Many2one('res.currency', string='Currency')
     sl = fields.Integer("Số Lượng", default=1)
     color = fields.Integer("Color")
 
-    @api.onchange('mon_an', 'mon_them', 'sl')
+    _defaults = {
+        'currency_id': lambda self, cr, uid, c: self.pool['ir.model.data'].xmlid_to_object(cr, uid, 'base.VND', False),
+    }
+
+    @api.onchange('mon_an', 'mon_them', 'sl', 'size')
     def onchange_monan(self):
         price = 0
-        price += self.mon_an.price
+        if self.size == 2:
+            price += self.mon_an.price_xl
+        else:
+            price += self.mon_an.price
         for mon_them in self.mon_them:
             price += mon_them.price
 

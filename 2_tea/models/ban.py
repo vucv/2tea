@@ -1,6 +1,8 @@
 # coding=utf-8
 from openerp import _,models,fields,api
 import random
+import win32ui
+import win32con
 
 
 class Ban(models.Model):
@@ -9,7 +11,7 @@ class Ban(models.Model):
     _rec_name = 'name'
 
     name = fields.Char("Name", required=True)
-    status = fields.Many2one("tea.ban.status", "Trạng Thái", default=1)
+    status = fields.Many2one("tea.ban.status", "Trạng Thái")
     # status = fields.Selection([('0', 'Số có sẵn'), ('1', 'Chờ pha chế'), ('2', 'Đã phục vụ'), ('3', 'Đã thanh toán')], "Trạng Thái", default="0")
     description = fields.Text("Mô tả")
     color = fields.Integer("Color")
@@ -56,35 +58,26 @@ class Ban(models.Model):
         # Check tien thối
 
         # In bill
-        self.write({"status": self.env.ref('2_tea.3').id, "is_thanh_toan": True})
-        self.order_id.write({"is_thanh_toan": True})
-        return {
-            'type': 'ir.actions.act_window',
-            'res_model': 'tea.ban',
-            'view_type': 'form',
-            'view_mode': 'kanban',
-            'target': 'new',
-        }
+        # test_print("Hello Would!!!")
+        print_bill(self.order_id.mon_an)
+        # L0gic
+        self.write({"is_thanh_toan": True})
 
     @api.one
     def action_reset_so(self):
         # Change status to 0
         self.order_id.write({"is_thanh_toan": True})
-        return self.write({"status": self.env.ref('2_tea.0').id, "order_id": False, "is_thanh_toan": False})
-        # return {
-        #     'type': 'ir.actions.act_window',
-        #     'res_model': 'tea.ban',
-        #     'view_type': 'form',
-        #     'view_mode': 'kanban',
-        #     'target': 'new',
-        # }
+        self.write({"status": self.env.ref('2_tea.0').id, "order_id": False, "is_thanh_toan": False})
+        return {'type': 'ir.actions.act_close_wizard_and_reload_view'}
 
-    @api.onchange('mon_an')
-    def onchange_monan(self):
-        if not self.mon_an:
-            self.status = "0"
-        else:
-            self.status = "1"
+    @api.multi
+    def write(self, vals):
+        if "status" in vals:
+            for item in self:
+                if not item.is_thanh_toan and vals.get("status", 0) == 4:
+                    item.action_checkout()
+        rec = super(Ban, self).write(vals)
+        return rec
 
 
 class BanStatus(models.Model):
@@ -92,3 +85,41 @@ class BanStatus(models.Model):
     _description = 'Trang thai bàn'
 
     name = fields.Char("Name", required=True)
+
+
+def test_print(input_string):
+    hDC = win32ui.CreateDC ()
+    hDC.CreatePrinterDC ("XP-80")
+    hDC.StartDoc ("XXX")
+    hDC.StartPage ()
+    hDC.TextOut(0,0,input_string)
+    for x in range(0, 200):
+        hDC.TextOut(50,x,str(x))
+    hDC.EndPage ()
+    hDC.EndDoc ()
+
+
+def print_bill(order):
+    X = 0
+    Y = 0
+    hDC = win32ui.CreateDC()
+    hDC.CreatePrinterDC("XP-80")
+    hDC.StartDoc("XXX")
+    hDC.StartPage()
+    hDC.TextOut(0, 0, "Trà Sữa 2Tea")
+    Y += 50
+    for item in order:
+        hDC.TextOut(0, Y, item.mon_an.name)
+        hDC.TextOut(300, Y, str(item.sl))
+        hDC.TextOut(450, Y, str(item.mon_an.price))
+        Y += 40
+    hDC.EndPage()
+    hDC.EndDoc()
+#
+#
+# def print_mon_an(self):
+#     p = Usb(0x04b8, 0x0202, 0, profile="TM-T88III")
+#     p.text("Hello World\n")
+#     p.image("logo.gif")
+#     p.barcode('1324354657687', 'EAN13', 64, 2, '', '')
+#     p.cut()
