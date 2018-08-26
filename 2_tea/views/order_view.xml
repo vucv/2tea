@@ -18,7 +18,15 @@
                         <h1><field name="ban"/></h1>
                     </group>
                     <group>
-                        <field name="position"/>
+                        <group>
+                            <field name="position"/>
+                        </group>
+                        <group>
+                            <field name="km"/>
+                        </group>
+                        <group>
+                            <field name="percent" readonly="1"/>
+                        </group>
                         <field name="id" invisible="1"/>
                     </group>
                     <group string="Món ăn">
@@ -39,7 +47,7 @@
                         <group></group>
                         <group>
                             <field name="currency_id" invisible="1"/>
-                            <field name="sl" invisible="0"/>
+                            <field name="sl" invisible="1"/>
                             <field name="price" widget='monetary' options="{'currency_field': 'currency_id'}"/>
                         </group>
                     </group>

@@ -3,3 +3,4 @@
 from . import food
 from . import ban
 from . import order
+from . import promotion

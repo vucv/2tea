@@ -28,6 +28,7 @@
         'security/ir.model.access.csv',
         # 'security/ir.model.access.csv',
         'views/food_view.xml',
+        'views/km_view.xml',
         'views/ban_view.xml',
         'views/order_view.xml',
         'views/order_mon_view.xml',

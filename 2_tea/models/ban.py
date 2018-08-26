@@ -12,6 +12,8 @@ class Ban(models.Model):
 
     name = fields.Char("Name", required=True)
     status = fields.Many2one("tea.ban.status", "Trạng Thái")
+    km = fields.Many2one("tea.km", "Chương Trình KM", related="order_id.km")
+    percent = fields.Integer("Giảm giá", related="km.percent")
     # status = fields.Selection([('0', 'Số có sẵn'), ('1', 'Chờ pha chế'), ('2', 'Đã phục vụ'), ('3', 'Đã thanh toán')], "Trạng Thái", default="0")
     description = fields.Text("Mô tả")
     color = fields.Integer("Color")

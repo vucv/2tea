@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form view for Technical Service -->
+    <record id="tea_km_form_view" model="ir.ui.view" >
+        <field name="name">tea.km.form.view</field>
+        <field name="model">tea.km</field>
+        <field name="arch" type="xml">
+            <form string="Chương trình khuyến mãi">
+                <!--<header>-->
+                <!--</header>-->
+                <sheet>
+                    <group>
+                        <h1><field name="name" placeholder="Tên Chương Trình" nolabel="1"/></h1>
+                    </group>
+                    <group>
+                        <field name="name_print" />
+                        <field name="active" />
+                    </group>
+                    <group>
+                        <field name='percent'/>
+                    </group>
+                    <group string="Ghi chú">
+                        <field name="description" placeholder="Thông Tin Chi Tiết" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="tea_km_tree_view" model="ir.ui.view">
+        <field name="name">tea.km.tree.view</field>
+        <field name="model">tea.km</field>
+        <field name="arch" type="xml">
+            <tree string="Chương trình khuyến mãi">
+                <field name="name" />
+                <field name="active" />
+                <field name="percent" />
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action Windows -->
+    <record id="action_tea_km" model="ir.actions.act_window">
+        <field name="name">Khuyến Mãi</field>
+        <field name="res_model">tea.km</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

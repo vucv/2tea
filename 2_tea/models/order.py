@@ -7,8 +7,10 @@ class Order(models.Model):
     _description = 'Order Food'
     _rec_name = 'position'
 
-    ban = fields.Many2one("tea.ban", "Bàn", domain="[('status', '=', '0')]", required=True)
-    create_date = fields.datetime("Ngày", related='create_date')
+    ban = fields.Many2one("tea.ban", "Bàn", domain="[('status', '=', 1)]", required=True)
+    # create_date = fields.datetime("Ngày", readonly=True)
+    km = fields.Many2one("tea.km", "Chương Trình KM", domain="[('active', '=', true)]")
+    percent = fields.Integer("Giảm giá", related="km.percent")
     position = fields.Many2one("tea.order.position", "Khu vực")
     # position = fields.Selection([('0', 'Trong nhà'), ('1', 'Gác'), ('2', 'Vườn')], "Khu vực", default="0")
     mon_an = fields.One2many("tea.order.mon", "order_id", "Món")
@@ -35,14 +37,17 @@ class Order(models.Model):
         # Change status to
         return self.ban.action_in_tem()
 
-    @api.onchange('mon_an')
+    @api.onchange('mon_an', 'km')
     def onchange_monan(self):
         price = 0
         sl = 0
         for mon_an in self.mon_an:
             price += mon_an.price
             sl += mon_an.sl
-        self.price = price
+        if self.km:
+            self.price = price * (100 - self.km.percent)/100
+        else:
+            self.price = price
         self.sl = sl
 
     @api.model

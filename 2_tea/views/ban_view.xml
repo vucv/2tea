@@ -25,9 +25,19 @@
                 <sheet>
                     <group>
                         <h1><field name="name" placeholder="Số bàn" /></h1>
-
                         <field name="order_id" invisible="1"/>
                         <field name="is_thanh_toan" invisible="1"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="position" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="km" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="percent" readonly="1"/>
+                        </group>
                     </group>
                     <group string="Món ăn">
                         <field name="mon_an" nolabel="1">
