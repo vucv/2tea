@@ -31,7 +31,7 @@ class Order(models.Model):
         # In bill
 
         # Change status to
-        return self.ban.action_checkout()
+        return self.ban.action_in_tem()
 
     @api.onchange('mon_an')
     def onchange_monan(self):
@@ -64,13 +64,14 @@ class OrderDetail(models.Model):
     order_id = fields.Many2one("tea.order", "Đặt hàng", required=True)
     ban = fields.Many2one("tea.ban", "Bàn", related="order_id.ban", store=True)
     is_thanh_toan = fields.Boolean("Đã thanh toán")
-    size = fields.Selection([(1, 'M'),(2, 'L')], default=1)
+    size = fields.Selection([(1, 'M'), (2, 'L')], default=1)
     status = fields.Selection([(1, 'Chưa làm'), (2, 'Đang làm'), (3, 'Xong')], "Trạng Thái", default=1)
     mon_an = fields.Many2one("tea.food", "Món", domain="[('is_required', '=', True)]", required=True)
     mon_them = fields.Many2many("tea.food", "tea_order_mon_them", "order_mon_id", "food_id", "Thêm",
                                 domain="[('is_required', '=', False)]")
     description = fields.Text("Ghi chú")
     price = fields.Float("Thành tiền")
+    price_xl = fields.Float("Size L", related="mon_an.price_xl")
     currency_id = fields.Many2one('res.currency', string='Currency')
     sl = fields.Integer("Số Lượng", default=1)
     color = fields.Integer("Color")
@@ -88,7 +89,7 @@ class OrderDetail(models.Model):
             price += self.mon_an.price
         for mon_them in self.mon_them:
             price += mon_them.price
-
+        self.size = False
         self.price = price*self.sl
 
 

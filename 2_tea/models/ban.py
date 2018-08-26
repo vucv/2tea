@@ -2,7 +2,7 @@
 from openerp import _,models,fields,api
 import random
 import win32ui
-import win32con
+import datetime
 
 
 class Ban(models.Model):
@@ -59,9 +59,15 @@ class Ban(models.Model):
 
         # In bill
         # test_print("Hello Would!!!")
-        print_bill(self.order_id.mon_an)
+        print_bill(self.order_id)
         # L0gic
         self.write({"is_thanh_toan": True})
+
+    @api.one
+    def action_in_tem(self):
+        for i, mon_an in enumerate(self.order_id.mon_an):
+            if mon_an.mon_an.is_print_temp:
+                print_mon_an(mon_an, "(%s/%s)" % (i+1, len(self.order_id.mon_an)))
 
     @api.one
     def action_reset_so(self):
@@ -99,27 +105,215 @@ def test_print(input_string):
     hDC.EndDoc ()
 
 
+fonts = {}
+def createFonts():
+    global fonts
+    normal = {
+        'name': 'Courier New',
+        'size': 12,
+        'weight': 400
+    }
+    bold = {
+        'name': 'Courier New',
+        'size': 12,
+        'weight': 700
+    }
+    italic = {
+        'name': 'Courier New',
+        'size': 12,
+        'weight': 400,
+        'italic': 1
+    }
+    for i in ['normal', 'bold', 'italic']:
+        d = locals().get(i)
+        f = win32ui.CreateFont(d)
+        fonts[i] = f
+
+
 def print_bill(order):
-    X = 0
     Y = 0
     hDC = win32ui.CreateDC()
+    font_h1 = win32ui.CreateFont({
+        "name": "Courier New",
+        "height": 70,
+        "weight": 800,
+        "charset": 0x000000A3
+    })
+    font_h2 = win32ui.CreateFont({
+        "name": "Courier New",
+        "height": 30,
+        "weight": 700,
+        "charset": 0x000000A3
+    })
+    font_normal = win32ui.CreateFont({
+        "name": "Courier New",
+        "height": 25,
+        "weight": 600
+    })
     hDC.CreatePrinterDC("XP-80")
     hDC.StartDoc("XXX")
     hDC.StartPage()
-    hDC.TextOut(0, 0, "Trà Sữa 2Tea")
-    Y += 50
-    for item in order:
-        hDC.TextOut(0, Y, item.mon_an.name)
-        hDC.TextOut(300, Y, str(item.sl))
-        hDC.TextOut(450, Y, str(item.mon_an.price))
+    hDC.SelectObject(font_h1)
+    hDC.TextOut(60, 0, "Tra Sua 2Tea")
+    Y += 60
+    hDC.SelectObject(font_normal)
+    hDC.TextOut(0, Y, "HD:" + str(order.id))
+    hDC.TextOut(200, Y, "Ngay:" + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    Y += 30
+    hDC.SelectObject(font_h2)
+    hDC.TextOut(0, Y, "Mon")
+    hDC.TextOut(330, Y, str("Size"))
+    hDC.TextOut(410, Y, str("SL"))
+    hDC.TextOut(490, Y, str("Gia"))
+    Y += 40
+    hDC.SelectObject(font_normal)
+    for item in order.mon_an:
+        p = 0
+        if len(item.mon_an.name_print) > 20:
+            chars = item.mon_an.name_print.split(" ")
+            lines = []
+            line = []
+            n = 0
+            for char in chars:
+                line.append(char)
+                n += len(char)
+                if n > 15:
+                    hDC.TextOut(0, Y + p*20, " ".join(line))
+                    p += 1
+                    line = []
+                    n = 0
+            if n > 0:
+                hDC.TextOut(0, Y + p*20, " ".join(line))
+
+        else:
+            hDC.TextOut(0, Y, item.mon_an.name_print)
+
+        hDC.TextOut(415, Y, str(item.sl))
+        if item.size == 2:
+            hDC.TextOut(360, Y, "L")
+            hDC.TextOut(450, Y, str(item.mon_an.price_xl))
+        else:
+            hDC.TextOut(360, Y, "M")
+            hDC.TextOut(450, Y, str(item.mon_an.price))
         Y += 40
+    hDC.TextOut(0, Y, "                      --------------")
+    Y += 20
+    hDC.SelectObject(font_h2)
+    hDC.TextOut(0, Y, "Tong cong:")
+    hDC.TextOut(450, Y, str(order.price))
+    Y += 30
+    hDC.TextOut(0, Y, "Tien mat:")
+    hDC.TextOut(450, Y, str(order.price))
+    Y += 30
+    hDC.TextOut(0, Y, "Thoi lai:")
+    hDC.TextOut(450, Y, str(0))
+    Y += 30
+    hDC.TextOut(0, Y, "====================================")
     hDC.EndPage()
     hDC.EndDoc()
-#
-#
-# def print_mon_an(self):
-#     p = Usb(0x04b8, 0x0202, 0, profile="TM-T88III")
-#     p.text("Hello World\n")
-#     p.image("logo.gif")
-#     p.barcode('1324354657687', 'EAN13', 64, 2, '', '')
-#     p.cut()
+
+
+def print_mon_an(mon_an, note):
+    Y = 0
+    hDC = win32ui.CreateDC()
+    font_h1 = win32ui.CreateFont({
+        "name": "Courier New",
+        "height": 70,
+        "weight": 800,
+        "charset": 0x000000A3
+    })
+    font_h2 = win32ui.CreateFont({
+        "name": "Courier New",
+        "height": 30,
+        "weight": 700,
+        "charset": 0x000000A3
+    })
+    font_normal = win32ui.CreateFont({
+        "name": "Courier New",
+        "height": 25,
+        "weight": 600
+    })
+    hDC = win32ui.CreateDC()
+    hDC.CreatePrinterDC("Gprinter 2120TU(Label)")
+    hDC.StartDoc("XXX")
+    hDC.StartPage()
+    hDC.SelectObject(font_h2)
+    p = 0
+    if len(mon_an.mon_an.name_print) > 20:
+        chars = mon_an.mon_an.name_print.split(" ")
+        lines = []
+        line = []
+        n = 0
+        for char in chars:
+            line.append(char)
+            n += len(char)
+            if n > 10:
+                hDC.TextOut(20, Y + p*30, " ".join(line))
+                p += 1
+                line = []
+                n = 0
+        if n > 0:
+            hDC.TextOut(20, Y + p*30, " ".join(line))
+
+    else:
+        hDC.TextOut(0, Y, mon_an.mon_an.name_print)
+    Y += 30 + p*20
+
+    hDC.TextOut(50, Y +20, "Size:")
+    hDC.SelectObject(font_h1)
+    if mon_an.size == 2:
+        hDC.TextOut(150, Y, "L")
+    else:
+        hDC.TextOut(150, Y, "M")
+    hDC.SelectObject(font_h2)
+    hDC.TextOut(200, Y +20, note)
+    Y += 50
+    hDC.SelectObject(font_normal)
+    hDC.TextOut(0, Y, "======================")
+    Y += 20
+    text = []
+    for item in mon_an.mon_them:
+        text = text + item.name_print.split(" ")
+        text.append(",")
+    if len(text) > 1:
+        del text[-1]
+    p = 0
+    if len(text) > 20:
+        lines = []
+        line = []
+        n = 0
+        for char in text:
+            line.append(char)
+            n += len(char)
+            if n > 13:
+                hDC.TextOut(20, Y + p*20, " ".join(line))
+                p += 1
+                line = []
+                n = 0
+        if n > 0:
+            hDC.TextOut(20, Y + p*20, " ".join(line))
+    else:
+        hDC.TextOut(20, Y, " ".join(text))
+    Y += 30 + p*20
+    hDC.SelectObject(font_normal)
+    p = 0
+    if mon_an.description != False and len(mon_an.description) > 20:
+        chars = mon_an.description.split(" ")
+        lines = []
+        line = []
+        n = 0
+        for char in chars:
+            line.append(char)
+            n += len(char)
+            if n > 13:
+                hDC.TextOut(20, Y + p*20, " ".join(line))
+                p += 1
+                line = []
+                n = 0
+        if n > 0:
+            hDC.TextOut(20, Y + p*20, " ".join(line))
+
+    elif mon_an.description != False:
+        hDC.TextOut(20, Y, mon_an.description)
+    hDC.EndPage()
+    hDC.EndDoc()

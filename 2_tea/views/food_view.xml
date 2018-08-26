@@ -14,6 +14,7 @@
                         <h1><field name="name" placeholder="Tên món" nolabel="1"/></h1>
                     </group>
                     <group>
+                        <field name="name_print" />
                         <field name="is_required" />
                         <field name="is_print_temp" />
                         <field name="currency_id"/>

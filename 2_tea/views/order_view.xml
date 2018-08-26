@@ -26,7 +26,8 @@
                             <tree string="Danh sách Trà Sữa" editable="bottom">
                                 <field name="mon_an" />
                                 <field name="sl" />
-                                <field name="size" />
+                                <field name="price_xl" invisible="1"/>
+                                <field name="size" attrs="{'readonly' : [('price_xl', '=', 0)]}"/>
                                 <field name="mon_them" widget="many2many_tags"/>
                                 <field name="description"/>
                                 <field name="currency_id" invisible="1"/>

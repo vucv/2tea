@@ -9,6 +9,7 @@ class Food(models.Model):
     _rec_name = 'name'
 
     name = fields.Char("Name", required=True)
+    name_print = fields.Char("Tên In tem", required=True)
     description = fields.Text("Công thức")
     is_required = fields.Boolean("Món chính")
     is_print_temp = fields.Boolean("In tem lên ly")
