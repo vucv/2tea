@@ -27,7 +27,7 @@
                                 <field name="mon_an" />
                                 <field name="sl" />
                                 <field name="price_xl" invisible="1"/>
-                                <field name="size" attrs="{'readonly' : [('price_xl', '=', 0)]}"/>
+                                <field name="size" attrs="{'invisible' : [('price_xl', '=', 0)]}"/>
                                 <field name="mon_them" widget="many2many_tags"/>
                                 <field name="description"/>
                                 <field name="currency_id" invisible="1"/>
@@ -39,6 +39,7 @@
                         <group></group>
                         <group>
                             <field name="currency_id" invisible="1"/>
+                            <field name="sl" invisible="0"/>
                             <field name="price" widget='monetary' options="{'currency_field': 'currency_id'}"/>
                         </group>
                     </group>
@@ -57,6 +58,7 @@
         <field name="arch" type="xml">
             <tree string="Danh sách Trà Sữa">
                 <field name="id" />
+                <field name="create_date" />
                 <field name="ban" />
                 <field name="mon_an"/>
                 <field name="currency_id" invisible="1"/>

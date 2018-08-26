@@ -1,5 +1,5 @@
 # coding=utf-8
-from openerp import _,models,fields,api
+from openerp import _, models, fields, api
 import random
 import win32ui
 import datetime
@@ -66,9 +66,12 @@ class Ban(models.Model):
 
     @api.one
     def action_in_tem(self):
+        n = 0
         for i, mon_an in enumerate(self.order_id.mon_an):
-            if mon_an.mon_an.is_print_temp:
-                print_mon_an(mon_an, "(%s/%s)" % (i+1, len(self.order_id.mon_an)))
+            if mon_an.mon_an.is_print_temp and mon_an.status == 1:
+                for j in range(0, mon_an.sl):
+                    n += 1
+                    print_mon_an(mon_an, "(%s/%s)" % (n, self.order_id.sl))
 
     @api.one
     def action_reset_so(self):
@@ -82,8 +85,15 @@ class Ban(models.Model):
         if "status" in vals:
             for item in self:
                 if not item.is_thanh_toan and vals.get("status", 0) == 4:
-                    item.action_checkout()
+                    warning = {'title': 'Warning!', 'message': 'Invalid action!'}
+                    return {'warning': warning}
+                if not item.mon_an and vals.get("status", 0) != 1:
+                    warning = {'title': 'Warning!', 'message': 'Invalid action!'}
+                    return {'warning': warning}
         rec = super(Ban, self).write(vals)
+        for item in self:
+            if vals.get("status", 0) == 3:
+                item.mon_an.write({"status": 3})
         return rec
 
 
@@ -95,18 +105,20 @@ class BanStatus(models.Model):
 
 
 def test_print(input_string):
-    hDC = win32ui.CreateDC ()
-    hDC.CreatePrinterDC ("XP-80")
-    hDC.StartDoc ("XXX")
-    hDC.StartPage ()
-    hDC.TextOut(0,0,input_string)
+    hDC = win32ui.CreateDC()
+    hDC.CreatePrinterDC("XP-80")
+    hDC.StartDoc("XXX")
+    hDC.StartPage()
+    hDC.TextOut(0, 0, input_string)
     for x in range(0, 200):
-        hDC.TextOut(50,x,str(x))
-    hDC.EndPage ()
-    hDC.EndDoc ()
+        hDC.TextOut(50, x, str(x))
+    hDC.EndPage()
+    hDC.EndDoc()
 
 
 fonts = {}
+
+
 def createFonts():
     global fonts
     normal = {
@@ -179,12 +191,12 @@ def print_bill(order):
                 line.append(char)
                 n += len(char)
                 if n > 15:
-                    hDC.TextOut(0, Y + p*20, " ".join(line))
+                    hDC.TextOut(0, Y + p * 20, " ".join(line))
                     p += 1
                     line = []
                     n = 0
             if n > 0:
-                hDC.TextOut(0, Y + p*20, " ".join(line))
+                hDC.TextOut(0, Y + p * 20, " ".join(line))
 
         else:
             hDC.TextOut(0, Y, item.mon_an.name_print)
@@ -215,7 +227,7 @@ def print_bill(order):
 
 
 def print_mon_an(mon_an, note):
-    Y = 0
+    Y = 10
     hDC = win32ui.CreateDC()
     font_h1 = win32ui.CreateFont({
         "name": "Courier New",
@@ -249,25 +261,25 @@ def print_mon_an(mon_an, note):
             line.append(char)
             n += len(char)
             if n > 10:
-                hDC.TextOut(20, Y + p*30, " ".join(line))
+                hDC.TextOut(20, Y + p * 30, " ".join(line))
                 p += 1
                 line = []
                 n = 0
         if n > 0:
-            hDC.TextOut(20, Y + p*30, " ".join(line))
+            hDC.TextOut(20, Y + p * 30, " ".join(line))
 
     else:
-        hDC.TextOut(0, Y, mon_an.mon_an.name_print)
-    Y += 30 + p*20
+        hDC.TextOut(20, Y, mon_an.mon_an.name_print)
+    Y += 30 + p * 20
 
-    hDC.TextOut(50, Y +20, "Size:")
+    hDC.TextOut(50, Y + 20, "Size:")
     hDC.SelectObject(font_h1)
     if mon_an.size == 2:
         hDC.TextOut(150, Y, "L")
     else:
         hDC.TextOut(150, Y, "M")
     hDC.SelectObject(font_h2)
-    hDC.TextOut(200, Y +20, note)
+    hDC.TextOut(200, Y + 20, note)
     Y += 50
     hDC.SelectObject(font_normal)
     hDC.TextOut(0, Y, "======================")
@@ -286,16 +298,16 @@ def print_mon_an(mon_an, note):
         for char in text:
             line.append(char)
             n += len(char)
-            if n > 13:
-                hDC.TextOut(20, Y + p*20, " ".join(line))
+            if n > 10:
+                hDC.TextOut(20, Y + p * 20, " ".join(line))
                 p += 1
                 line = []
                 n = 0
         if n > 0:
-            hDC.TextOut(20, Y + p*20, " ".join(line))
+            hDC.TextOut(20, Y + p * 20, " ".join(line))
     else:
         hDC.TextOut(20, Y, " ".join(text))
-    Y += 30 + p*20
+    Y += 30 + p * 20
     hDC.SelectObject(font_normal)
     p = 0
     if mon_an.description != False and len(mon_an.description) > 20:
@@ -307,12 +319,12 @@ def print_mon_an(mon_an, note):
             line.append(char)
             n += len(char)
             if n > 13:
-                hDC.TextOut(20, Y + p*20, " ".join(line))
+                hDC.TextOut(20, Y + p * 20, " ".join(line))
                 p += 1
                 line = []
                 n = 0
         if n > 0:
-            hDC.TextOut(20, Y + p*20, " ".join(line))
+            hDC.TextOut(20, Y + p * 20, " ".join(line))
 
     elif mon_an.description != False:
         hDC.TextOut(20, Y, mon_an.description)

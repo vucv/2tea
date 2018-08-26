@@ -8,6 +8,7 @@ class Order(models.Model):
     _rec_name = 'position'
 
     ban = fields.Many2one("tea.ban", "Bàn", domain="[('status', '=', '0')]", required=True)
+    create_date = fields.datetime("Ngày", related='create_date')
     position = fields.Many2one("tea.order.position", "Khu vực")
     # position = fields.Selection([('0', 'Trong nhà'), ('1', 'Gác'), ('2', 'Vườn')], "Khu vực", default="0")
     mon_an = fields.One2many("tea.order.mon", "order_id", "Món")
@@ -16,6 +17,7 @@ class Order(models.Model):
     price = fields.Float("Thành tiền")
     currency_id = fields.Many2one('res.currency', string='Currency')
     is_thanh_toan = fields.Boolean("Đã thanh toán")
+    sl = fields.Integer("Số Lượng", default=0)
 
     _defaults = {
         'position': lambda self, cr, uid, c: self.pool['ir.model.data'].xmlid_to_object(cr, uid, '2_tea.trong_nha', False),
@@ -36,10 +38,12 @@ class Order(models.Model):
     @api.onchange('mon_an')
     def onchange_monan(self):
         price = 0
+        sl = 0
         for mon_an in self.mon_an:
             price += mon_an.price
-
+            sl += mon_an.sl
         self.price = price
+        self.sl = sl
 
     @api.model
     def create(self, vals):
@@ -81,16 +85,19 @@ class OrderDetail(models.Model):
     }
 
     @api.onchange('mon_an', 'mon_them', 'sl', 'size')
+    @api.multi
     def onchange_monan(self):
         price = 0
-        if self.size == 2:
-            price += self.mon_an.price_xl
-        else:
-            price += self.mon_an.price
-        for mon_them in self.mon_them:
-            price += mon_them.price
-        self.size = False
-        self.price = price*self.sl
+        for item in self:
+            if item.size == 2:
+                price += item.mon_an.price_xl
+            else:
+                price += item.mon_an.price
+            for mon_them in item.mon_them:
+                price += mon_them.price
+            if isinstance(item.mon_an.price_xl, float) and item.mon_an.price_xl == 0:
+                item.size = False
+            item.price = price*item.sl
 
 
 class Position(models.Model):

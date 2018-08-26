@@ -10,12 +10,14 @@
                 <header>
                     <button class="btn btn-primary" attrs="{'invisible':[('order_id','!=', False)]}"
                             name="action_order" string="Gọi Món" type="object"/>
-                    <button class="btn btn-primary" attrs="{'invisible':[('order_id','==', False)]}"
+                    <button class="btn btn-primary" attrs="{'invisible':['|',('order_id','==', False),('is_thanh_toan','==', True)]}"
                             name="action_order" string="Gọi Thêm Món" type="object"/>
-                    <button class="btn btn-primary" attrs="{'invisible':[('order_id','==', False)]}"
+                    <button class="btn btn-primary" attrs="{'invisible':['|',('order_id','==', False),('is_thanh_toan','==', True)]}"
                             name="action_in_tem" string="In Tem" type="object"/>
-                    <button class="btn btn-danger" attrs="{'invisible':[('order_id','==', False)]}"
+                    <button class="btn btn-danger" attrs="{'invisible':['|',('order_id','==', False),('is_thanh_toan','==', True)]}"
                             name="action_checkout" string="Thanh toán &amp; in bill" type="object"/>
+                    <button class="btn btn-danger" attrs="{'invisible':['|',('order_id','==', False),('is_thanh_toan','==', False)]}"
+                            name="action_checkout" string="In bill lại" type="object"/>
                     <button class="btn btn-danger" attrs="{'invisible':[('is_thanh_toan','==', False)]}"
                             name="action_reset_so" string="Thu hồi số" type="object"/>
                     <field name="status" widget="statusbar" clickable="True"/>

@@ -73,12 +73,11 @@
         <field name="model">tea.order.mon</field>
         <field name="arch" type="xml">
             <tree string="Danh sách Trà Sữa">
-                <field name="ban"/>
+                <field name="id"/>
                 <field name="size"/>
                 <field name="mon_an" />
                 <field name="mon_them" widget="many2many_tags"/>
-                <field name="status"/>
-                <field name="description"/>
+                <field name="sl" sum="Tổng"/>
             </tree>
         </field>
     </record>

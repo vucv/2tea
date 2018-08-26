@@ -4,3 +4,4 @@ access_tea_ban_status_employee,tea.ban.status,2_tea.model_tea_ban_status,2tea_em
 access_tea_food_employee,tea.ban,2_tea.model_tea_food,2tea_employee,1,1,1,0
 access_tea_order_mon_employee,tea.order,2_tea.model_tea_order,2tea_employee,1,1,1,1
 access_tea_order_employee,tea.order.mon,2_tea.model_tea_order_mon,2tea_employee,1,1,1,1
+access_tea_order_position_employee,tea.order.position,2_tea.model_tea_order_position,2tea_employee,1,0,0,0
