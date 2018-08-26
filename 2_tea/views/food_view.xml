@@ -75,6 +75,16 @@
         </field>
     </record>
 
+    <record id="tea_food_search_form" model="ir.ui.view">
+        <field name="name">tea.food.search.form</field>
+        <field name="model">tea.food</field>
+        <field name="arch" type="xml">
+            <search string="Food">
+                <field name="name" string="Tên"/>
+                <field name="name_print" string="Tên"/>
+            </search>
+        </field>
+    </record>
 
     <record id="tea_food_tree_view" model="ir.ui.view">
         <field name="name">tea.food.tree.view</field>

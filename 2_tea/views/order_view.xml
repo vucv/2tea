@@ -10,8 +10,10 @@
                 <header>
                     <button class="btn btn-primary" attrs="{'invisible':[('id','==', False)]}"
                             name="action_in_tem" string="In Tem" type="object"/>
-                    <button class="btn btn-danger" attrs="{'invisible':[('id','==', False)]}"
+                    <button class="btn btn-danger" attrs="{'invisible':['|',('id','==', False), ('is_thanh_toan','==', True)]}"
                             name="action_checkout" string="Thanh toán &amp; in bill" type="object"/>
+                    <button class="btn btn-danger" attrs="{'invisible':['|',('id','==', False), ('is_thanh_toan','==', False)]}"
+                            name="action_checkout" string="In bill lại" type="object"/>
                 </header>
                 <sheet>
                     <group>
@@ -20,14 +22,13 @@
                     <group>
                         <group>
                             <field name="position"/>
-                        </group>
-                        <group>
                             <field name="km"/>
-                        </group>
-                        <group>
                             <field name="percent" readonly="1"/>
+                            <field name="id" invisible="1"/>
+                            <field name="is_thanh_toan" invisible="1"/>
                         </group>
-                        <field name="id" invisible="1"/>
+                        <group></group>
+
                     </group>
                     <group string="Món ăn">
                         <field name="mon_an" nolabel="1">
@@ -81,6 +82,7 @@
         <field name="res_model">tea.order</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
+        <field name="context">{'group_by':'create_date'}</field>
     </record>
 
 </odoo>

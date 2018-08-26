@@ -1,30 +1,67 @@
 <openerp>
     <data>
-        <!--  -->
-        <!--   <record id="object0" model="2_tea.2_tea"> -->
-        <!--     <field name="name">Object 0</field> -->
-        <!--     <field name="value">0</field> -->
-        <!--   </record> -->
-        <!--  -->
-        <!--   <record id="object1" model="2_tea.2_tea"> -->
-        <!--     <field name="name">Object 1</field> -->
-        <!--     <field name="value">10</field> -->
-        <!--   </record> -->
-        <!--  -->
-        <!--   <record id="object2" model="2_tea.2_tea"> -->
-        <!--     <field name="name">Object 2</field> -->
-        <!--     <field name="value">20</field> -->
-        <!--   </record> -->
-        <!--  -->
-        <!--   <record id="object3" model="2_tea.2_tea"> -->
-        <!--     <field name="name">Object 3</field> -->
-        <!--     <field name="value">30</field> -->
-        <!--   </record> -->
-        <!--  -->
-        <!--   <record id="object4" model="2_tea.2_tea"> -->
-        <!--     <field name="name">Object 4</field> -->
-        <!--     <field name="value">40</field> -->
-        <!--   </record> -->
-        <!--  -->
+        <record id="tea_ban_0" model="tea.ban">
+            <field name="name">Số 1</field>
+        </record>
+        <record id="tea_ban_2" model="tea.ban">
+            <field name="name">Số 2</field>
+        </record>
+        <record id="tea_ban_3" model="tea.ban">
+            <field name="name">Số 3</field>
+        </record>
+        <record id="tea_ban_4" model="tea.ban">
+            <field name="name">Số 4</field>
+        </record>
+        <record id="tea_ban_5" model="tea.ban">
+            <field name="name">Số 5</field>
+        </record>
+        <record id="tea_ban_6" model="tea.ban">
+            <field name="name">Số 6</field>
+        </record>
+        <record id="tea_ban_7" model="tea.ban">
+            <field name="name">Số 7</field>
+        </record>
+        <record id="tea_ban_8" model="tea.ban">
+            <field name="name">Số 8</field>
+        </record>
+        <record id="tea_ban_9" model="tea.ban">
+            <field name="name">Số 9</field>
+        </record>
+        <record id="tea_ban_10" model="tea.ban">
+            <field name="name">Số 10</field>
+        </record>
+        <record id="tea_ban_11" model="tea.ban">
+            <field name="name">Số 11</field>
+        </record>
+        <record id="tea_ban_12" model="tea.ban">
+            <field name="name">Số 12</field>
+        </record>
+        <record id="tea_ban_13" model="tea.ban">
+            <field name="name">Số 13</field>
+        </record>
+        <record id="tea_ban_14" model="tea.ban">
+            <field name="name">Số 14</field>
+        </record>
+        <record id="tea_ban_15" model="tea.ban">
+            <field name="name">Số 15</field>
+        </record>
+        <record id="tea_ban_16" model="tea.ban">
+            <field name="name">Số 16</field>
+        </record>
+        <record id="tea_ban_17" model="tea.ban">
+            <field name="name">Số 17</field>
+        </record>
+        <record id="tea_ban_18" model="tea.ban">
+            <field name="name">Số 18</field>
+        </record>
+        <record id="tea_ban_19" model="tea.ban">
+            <field name="name">Số 19</field>
+        </record>
+        <record id="tea_ban_20" model="tea.ban">
+            <field name="name">Số 20</field>
+        </record>
+        <record id="tea_ban_21" model="tea.ban">
+            <field name="name">Số 21</field>
+        </record>
     </data>
 </openerp>

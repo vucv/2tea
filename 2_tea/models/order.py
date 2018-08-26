@@ -9,7 +9,7 @@ class Order(models.Model):
 
     ban = fields.Many2one("tea.ban", "Bàn", domain="[('status', '=', 1)]", required=True)
     # create_date = fields.datetime("Ngày", readonly=True)
-    km = fields.Many2one("tea.km", "Chương Trình KM", domain="[('active', '=', true)]")
+    km = fields.Many2one("tea.km", "Chương Trình KM", domain="[('active', '=', True)]")
     percent = fields.Integer("Giảm giá", related="km.percent")
     position = fields.Many2one("tea.order.position", "Khu vực")
     # position = fields.Selection([('0', 'Trong nhà'), ('1', 'Gác'), ('2', 'Vườn')], "Khu vực", default="0")
@@ -44,7 +44,7 @@ class Order(models.Model):
         for mon_an in self.mon_an:
             price += mon_an.price
             sl += mon_an.sl
-        if self.km:
+        if isinstance(self.km.id, int):
             self.price = price * (100 - self.km.percent)/100
         else:
             self.price = price
