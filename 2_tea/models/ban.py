@@ -19,6 +19,7 @@ class Ban(models.Model):
     mon_an = fields.One2many("tea.order.mon", "ban", "Món", domain=[("is_thanh_toan", "=", False)])
     position = fields.Many2one("tea.order.position", "Khu vực", related="order_id.position")
     is_thanh_toan = fields.Boolean("Đã thanh toán")
+    price = fields.Float("Thành tiền", related="order_id.price")
 
     def _read_group_stage_ids(self, cr, uid, ids, domain, read_group_order=None, access_rights_uid=None, context=None):
         stage_obj = self.pool.get('tea.ban.status')

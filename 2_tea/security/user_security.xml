@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+    <record id="2tea_employee" model="res.groups">
+        <field name="name">Nhân Viên 2Tea</field>
+    </record>
+
+</data>
+</openerp>

@@ -4,7 +4,7 @@
 	<menuitem id="menu_reception" name="Tiếp Tân" parent="menu_root" sequence="1" action="action_tea_ban"/>
 	<menuitem id="menu_phache" name="Pha Chế" parent="menu_root" sequence="2" action="action_tea_order_mon"/>
 	<menuitem id="menu_food" name="Thực Đơn" parent="menu_root" sequence="3" action="action_tea_food"/>
-	<menuitem id="menu_report" name="Lịch sử giao dịch" parent="menu_root" sequence="4"/>
+	<menuitem id="menu_report" name="Lịch sử giao dịch" parent="menu_root" sequence="4" groups="base.group_no_one" />
 	<menuitem id="menu_report_1" name="Doanh Thu" parent="menu_report" sequence="1" action="action_tea_order"/>
 	<menuitem id="menu_report_2" name="Món ăn" parent="menu_report" sequence="2" action="action_tea_order_mon_report"/>
 </odoo>
