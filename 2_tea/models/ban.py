@@ -190,13 +190,14 @@ def print_bill(order):
             line = []
             n = 0
             for char in chars:
-                line.append(char)
                 n += len(char)
                 if n > 15:
                     hDC.TextOut(0, Y + p * 20, " ".join(line))
                     p += 1
                     line = []
                     n = 0
+                else:
+                    line.append(char)
             if n > 0:
                 hDC.TextOut(0, Y + p * 20, " ".join(line))
 
@@ -224,6 +225,13 @@ def print_bill(order):
     hDC.TextOut(450, Y, str(0))
     Y += 30
     hDC.TextOut(0, Y, "====================================")
+    Y += 30
+    if order.km:
+        hDC.TextOut(0, Y, order.km.name_print)
+    Y += 30
+    hDC.SelectObject(font_h2)
+    hDC.TextOut(0, Y, "*******CHUC QUY KHACH VUI VE*****")
+
     hDC.EndPage()
     hDC.EndDoc()
 
@@ -260,13 +268,14 @@ def print_mon_an(mon_an, note):
         line = []
         n = 0
         for char in chars:
-            line.append(char)
             n += len(char)
             if n > 10:
                 hDC.TextOut(20, Y + p * 30, " ".join(line))
                 p += 1
                 line = []
                 n = 0
+            else:
+                line.append(char)
         if n > 0:
             hDC.TextOut(20, Y + p * 30, " ".join(line))
 
@@ -298,13 +307,14 @@ def print_mon_an(mon_an, note):
         line = []
         n = 0
         for char in text:
-            line.append(char)
             n += len(char)
             if n > 10:
                 hDC.TextOut(20, Y + p * 20, " ".join(line))
                 p += 1
                 line = []
                 n = 0
+            else:
+                line.append(char)
         if n > 0:
             hDC.TextOut(20, Y + p * 20, " ".join(line))
     else:
@@ -320,7 +330,7 @@ def print_mon_an(mon_an, note):
         for char in chars:
             line.append(char)
             n += len(char)
-            if n > 13:
+            if n > 10:
                 hDC.TextOut(20, Y + p * 20, " ".join(line))
                 p += 1
                 line = []
