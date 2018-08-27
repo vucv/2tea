@@ -176,7 +176,7 @@ def print_bill(order):
     hDC.StartDoc("XXX")
     hDC.StartPage()
     hDC.SelectObject(font_h1)
-    hDC.TextOut(60, 0, "Tra Sua 2Tea")
+    hDC.TextOut(60, 0, "Tra Sua HiTea")
     Y += 60
     hDC.SelectObject(font_normal)
     hDC.TextOut(0, Y, "HD:" + str(order.id))
@@ -303,50 +303,28 @@ def print_mon_an(mon_an, note):
     hDC.SelectObject(font_normal)
     hDC.TextOut(0, Y, "======================")
     Y += 20
-    text = []
     for item in mon_an.mon_them:
-        text = text + item.name_print.split(" ")
-        text.append(",")
-    if len(text) > 1:
-        del text[-1]
-    p = 0
-    if len(text) > 20:
-        lines = []
-        line = []
-        n = 0
-        for char in text:
-            n += len(char)
-            if n > 15:
-                hDC.TextOut(30, Y + p * 20, " ".join(line))
-                p += 1
-                line = []
-                n = 0
-            else:
-                line.append(char)
-        if n > 0:
-            hDC.TextOut(30, Y + p * 20, " ".join(line))
-    else:
-        hDC.TextOut(30, Y, " ".join(text))
-    Y += 30 + p * 20
+        hDC.TextOut(30, Y, item.name_print)
+        Y += 10
     hDC.SelectObject(font_normal)
-    p = 0
-    if mon_an.description != False and len(mon_an.description) > 20:
-        chars = mon_an.description.split(" ")
-        lines = []
-        line = []
-        n = 0
-        for char in chars:
-            line.append(char)
-            n += len(char)
-            if n > 15:
-                hDC.TextOut(30, Y + p * 20, " ".join(line))
-                p += 1
-                line = []
-                n = 0
-        if n > 0:
-            hDC.TextOut(30, Y + p * 20, " ".join(line))
-
-    elif mon_an.description != False:
-        hDC.TextOut(20, Y, mon_an.description)
+    # p = 0
+    # if mon_an.description != False and len(mon_an.description) > 20:
+    #     chars = mon_an.description.split(" ")
+    #     lines = []
+    #     line = []
+    #     n = 0
+    #     for char in chars:
+    #         line.append(char)
+    #         n += len(char)
+    #         if n > 15:
+    #             hDC.TextOut(30, Y + p * 20, " ".join(line))
+    #             p += 1
+    #             line = []
+    #             n = 0
+    #     if n > 0:
+    #         hDC.TextOut(30, Y + p * 20, " ".join(line))
+    #
+    # elif mon_an.description != False:
+    #     hDC.TextOut(20, Y, mon_an.description)
     hDC.EndPage()
     hDC.EndDoc()
