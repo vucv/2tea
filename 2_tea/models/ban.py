@@ -309,7 +309,7 @@ def print_mon_an(mon_an, note):
         n = 0
         for char in text:
             n += len(char)
-            if n > 20:
+            if n > 15:
                 hDC.TextOut(30, Y + p * 20, " ".join(line))
                 p += 1
                 line = []
@@ -331,7 +331,7 @@ def print_mon_an(mon_an, note):
         for char in chars:
             line.append(char)
             n += len(char)
-            if n > 20:
+            if n > 15:
                 hDC.TextOut(30, Y + p * 20, " ".join(line))
                 p += 1
                 line = []
