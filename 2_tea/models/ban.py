@@ -227,7 +227,8 @@ def print_bill(order):
     hDC.TextOut(0, Y, "====================================")
     Y += 30
     if order.km:
-        hDC.TextOut(0, Y, order.km.name_print)
+        hDC.TextOut(0, Y, "Ap dung KM:")
+        hDC.TextOut(150, Y, order.km.name_print)
     Y += 30
     hDC.SelectObject(font_h2)
     hDC.TextOut(0, Y, "*******CHUC QUY KHACH VUI VE*****")
@@ -269,18 +270,18 @@ def print_mon_an(mon_an, note):
         n = 0
         for char in chars:
             n += len(char)
-            if n > 10:
-                hDC.TextOut(20, Y + p * 30, " ".join(line))
+            if n > 20:
+                hDC.TextOut(30, Y + p * 30, " ".join(line))
                 p += 1
                 line = []
                 n = 0
             else:
                 line.append(char)
         if n > 0:
-            hDC.TextOut(20, Y + p * 30, " ".join(line))
+            hDC.TextOut(30, Y + p * 30, " ".join(line))
 
     else:
-        hDC.TextOut(20, Y, mon_an.mon_an.name_print)
+        hDC.TextOut(30, Y, mon_an.mon_an.name_print)
     Y += 30 + p * 20
 
     hDC.TextOut(50, Y + 20, "Size:")
@@ -308,17 +309,17 @@ def print_mon_an(mon_an, note):
         n = 0
         for char in text:
             n += len(char)
-            if n > 10:
-                hDC.TextOut(20, Y + p * 20, " ".join(line))
+            if n > 20:
+                hDC.TextOut(30, Y + p * 20, " ".join(line))
                 p += 1
                 line = []
                 n = 0
             else:
                 line.append(char)
         if n > 0:
-            hDC.TextOut(20, Y + p * 20, " ".join(line))
+            hDC.TextOut(30, Y + p * 20, " ".join(line))
     else:
-        hDC.TextOut(20, Y, " ".join(text))
+        hDC.TextOut(30, Y, " ".join(text))
     Y += 30 + p * 20
     hDC.SelectObject(font_normal)
     p = 0
@@ -330,13 +331,13 @@ def print_mon_an(mon_an, note):
         for char in chars:
             line.append(char)
             n += len(char)
-            if n > 10:
-                hDC.TextOut(20, Y + p * 20, " ".join(line))
+            if n > 20:
+                hDC.TextOut(30, Y + p * 20, " ".join(line))
                 p += 1
                 line = []
                 n = 0
         if n > 0:
-            hDC.TextOut(20, Y + p * 20, " ".join(line))
+            hDC.TextOut(30, Y + p * 20, " ".join(line))
 
     elif mon_an.description != False:
         hDC.TextOut(20, Y, mon_an.description)
