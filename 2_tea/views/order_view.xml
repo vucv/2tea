@@ -17,12 +17,10 @@
                 </header>
                 <sheet>
                     <group>
-                        <h1><field name="ban"/></h1>
-                    </group>
-                    <group>
                         <group>
-                            <field name="position"/>
-                            <field name="km"/>
+                            <field name="ban" widget="selection" options="{'no_open' : True}"/>
+                            <field name="position" widget="selection" options="{'no_open' : True}"/>
+                            <field name="km" widget="selection" options="{'no_open' : True}"/>
                             <field name="percent" readonly="1"/>
                             <field name="id" invisible="1"/>
                             <field name="is_thanh_toan" invisible="1"/>
@@ -33,11 +31,11 @@
                     <group string="Món ăn">
                         <field name="mon_an" nolabel="1">
                             <tree string="Danh sách Trà Sữa" editable="bottom">
-                                <field name="mon_an" />
+                                <field name="mon_an" options="{'no_open' : True}"/>
                                 <field name="sl" />
                                 <field name="price_xl" invisible="1"/>
                                 <field name="size" attrs="{'invisible' : [('price_xl', '=', 0)]}"/>
-                                <field name="mon_them" widget="many2many_tags"/>
+                                <field name="mon_them" widget="many2many_tags" options="{'no_open' : True}"/>
                                 <field name="currency_id" invisible="1"/>
                                 <field name="price" sum='Tổng cộng' widget='monetary' options="{'currency_field': 'currency_id'}" />
                             </tree>
