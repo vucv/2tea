@@ -31,6 +31,7 @@
             <field name="price">18000</field>
             <field name="price_xl">20000</field>
             <field name="currency_id" ref="base.VND"/>
+            <field name="type" ref="2_tea.tea_food_type_1"/>
         </record>
         <record id="tea_food_2" model="tea.food">
             <field name="name">Trà sữa Đất</field>
@@ -40,6 +41,7 @@
             <field name="price">18000</field>
             <field name="price_xl">20000</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_1"/>
         </record>
         <record id="tea_food_3" model="tea.food">
             <field name="name">Trà sữa Hitea</field>
@@ -49,6 +51,7 @@
             <field name="price">18000</field>
             <field name="price_xl">20000</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_1"/>
         </record>
         <record id="tea_food_4" model="tea.food">
             <field name="name">Trà sữa Hokkaido</field>
@@ -58,6 +61,7 @@
             <field name="price">18000</field>
             <field name="price_xl">20000</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_1"/>
         </record>
         <record id="tea_food_5" model="tea.food">
             <field name="name">Trà sữa Socola</field>
@@ -67,6 +71,7 @@
             <field name="price">18000</field>
             <field name="price_xl">20000</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_1"/>
         </record>
         <record id="tea_food_6" model="tea.food">
             <field name="name">Trà sữa Matcha đậu đỏ</field>
@@ -76,6 +81,7 @@
             <field name="price">18000</field>
             <field name="price_xl">20000</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_1"/>
         </record>
         <record id="tea_food_7" model="tea.food">
             <field name="name">Trà sữa Khoai môn</field>
@@ -85,6 +91,7 @@
             <field name="price">18000</field>
             <field name="price_xl">20000</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_1"/>
         </record>
         <record id="tea_food_8" model="tea.food">
             <field name="name">Trà đào</field>
@@ -94,6 +101,7 @@
             <field name="price">18000</field>
             <field name="price_xl">20000</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_1"/>
         </record>
 
         <record id="tea_food_9" model="tea.food">
@@ -104,6 +112,7 @@
             <field name="price">22000</field>
             <field name="price_xl">25000</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_2"/>
         </record>
         <record id="tea_food_10" model="tea.food">
             <field name="name">Hồng trà Machiato</field>
@@ -113,6 +122,7 @@
             <field name="price">22000</field>
             <field name="price_xl">25000</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_2"/>
         </record>
         <record id="tea_food_11" model="tea.food">
             <field name="name">Đậu biếc Machiato</field>
@@ -122,6 +132,7 @@
             <field name="price">22000</field>
             <field name="price_xl">25000</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_2"/>
         </record>
         <record id="tea_food_12" model="tea.food">
             <field name="name">Lục trà nhài kem Machiato</field>
@@ -131,6 +142,7 @@
             <field name="price">22000</field>
             <field name="price_xl">25000</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_2"/>
         </record>
         <record id="tea_food_13" model="tea.food">
             <field name="name">Olong kem cheese</field>
@@ -140,6 +152,7 @@
             <field name="price">22000</field>
             <field name="price_xl">25000</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_2"/>
         </record>
         <record id="tea_food_14" model="tea.food">
             <field name="name">Hồng trà thanh long kem cheese</field>
@@ -149,6 +162,7 @@
             <field name="price">28000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_2"/>
         </record>
         <record id="tea_food_15" model="tea.food">
             <field name="name">Olong Xoài kem cheese</field>
@@ -158,6 +172,7 @@
             <field name="price">28000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_2"/>
         </record>
         <record id="tea_food_16" model="tea.food">
             <field name="name">Lục trà dâu kem cheese</field>
@@ -167,6 +182,7 @@
             <field name="price">28000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_2"/>
         </record>
 
         <record id="tea_food_17" model="tea.food">
@@ -177,6 +193,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_3"/>
         </record>
         <record id="tea_food_18" model="tea.food">
             <field name="name">Trà đào cam xả</field>
@@ -186,6 +203,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_3"/>
         </record>
         <record id="tea_food_19" model="tea.food">
             <field name="name">Lục trà thơm xả</field>
@@ -195,6 +213,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_3"/>
         </record>
         <record id="tea_food_20" model="tea.food">
             <field name="name">Trà ô long dâu</field>
@@ -204,6 +223,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_3"/>
         </record>
         <record id="tea_food_21" model="tea.food">
             <field name="name">Cam vàng đậu biếc</field>
@@ -213,6 +233,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_3"/>
         </record>
         <record id="tea_food_22" model="tea.food">
             <field name="name">Trà trái cây nhiệt đới</field>
@@ -222,6 +243,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_3"/>
         </record>
 
         <record id="tea_food_23" model="tea.food">
@@ -232,6 +254,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_4"/>
         </record>
         <record id="tea_food_24" model="tea.food">
             <field name="name">Socola Blender</field>
@@ -241,6 +264,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_4"/>
         </record>
         <record id="tea_food_25" model="tea.food">
             <field name="name">Matcha Blender</field>
@@ -250,6 +274,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_4"/>
         </record>
 
         <record id="tea_food_26" model="tea.food">
@@ -260,6 +285,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_4"/>
         </record>
         <record id="tea_food_27" model="tea.food">
             <field name="name">Matcha Blender</field>
@@ -269,6 +295,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_4"/>
         </record>
         <record id="tea_food_28" model="tea.food">
             <field name="name">Xoài dứa Smoothies</field>
@@ -278,6 +305,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_4"/>
         </record>
         <record id="tea_food_29" model="tea.food">
             <field name="name">Matcha Blender</field>
@@ -287,6 +315,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_4"/>
         </record>
         <record id="tea_food_30" model="tea.food">
             <field name="name">Dâu Smoothies</field>
@@ -296,6 +325,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_4"/>
         </record>
         <record id="tea_food_31" model="tea.food">
             <field name="name">Yogourt trái cây Shake</field>
@@ -305,6 +335,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_4"/>
         </record>
 
         <record id="tea_food_32" model="tea.food">
@@ -315,6 +346,7 @@
             <field name="price">15000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_5"/>
         </record>
         <record id="tea_food_33" model="tea.food">
             <field name="name">Coffee Sữa</field>
@@ -324,6 +356,7 @@
             <field name="price">15000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_5"/>
         </record>
         <record id="tea_food_34" model="tea.food">
             <field name="name">Bạc xĩu</field>
@@ -333,6 +366,7 @@
             <field name="price">15000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_5"/>
         </record>
         <record id="tea_food_35" model="tea.food">
             <field name="name">Socola</field>
@@ -342,6 +376,7 @@
             <field name="price">15000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_5"/>
         </record>
         <record id="tea_food_36" model="tea.food">
             <field name="name">Nước ngọt có gas</field>
@@ -351,6 +386,7 @@
             <field name="price">12000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_5"/>
         </record>
 
         <record id="tea_food_37" model="tea.food">
@@ -361,6 +397,7 @@
             <field name="price">5000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_7"/>
         </record>
         <record id="tea_food_38" model="tea.food">
             <field name="name">Trân châu trắng</field>
@@ -370,6 +407,7 @@
             <field name="price">5000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_7"/>
         </record>
         <record id="tea_food_39" model="tea.food">
             <field name="name">Trân châu hoàng kim</field>
@@ -379,6 +417,7 @@
             <field name="price">5000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_7"/>
         </record>
         <record id="tea_food_40" model="tea.food">
             <field name="name">Trân trâu 3Q</field>
@@ -388,6 +427,7 @@
             <field name="price">5000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_7"/>
         </record>
 
         <record id="tea_food_41" model="tea.food">
@@ -398,6 +438,7 @@
             <field name="price">5000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_7"/>
         </record>
         <record id="tea_food_42" model="tea.food">
             <field name="name">Budding khoai môn</field>
@@ -407,6 +448,7 @@
             <field name="price">5000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_7"/>
         </record>
         <record id="tea_food_43" model="tea.food">
             <field name="name">Budding socola</field>
@@ -416,6 +458,7 @@
             <field name="price">5000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_7"/>
         </record>
         <record id="tea_food_44" model="tea.food">
             <field name="name">Budding dưa lưới</field>
@@ -425,6 +468,7 @@
             <field name="price">5000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_7"/>
         </record>
 
         <record id="tea_food_45" model="tea.food">
@@ -435,6 +479,7 @@
             <field name="price">5000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_7"/>
         </record>
         <record id="tea_food_46" model="tea.food">
             <field name="name">Thạch trái cây</field>
@@ -444,6 +489,7 @@
             <field name="price">5000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_7"/>
         </record>
         <record id="tea_food_47" model="tea.food">
             <field name="name">Đậu đỏ</field>
@@ -453,6 +499,7 @@
             <field name="price">5000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_7"/>
         </record>
         <record id="tea_food_48" model="tea.food">
             <field name="name">Combo budding</field>
@@ -462,6 +509,7 @@
             <field name="price">5000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_7"/>
         </record>
 
         <record id="tea_food_49" model="tea.food">
@@ -472,6 +520,7 @@
             <field name="price">30000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_9"/>
         </record>
         <record id="tea_food_50" model="tea.food">
             <field name="name">Mì cay Hải sản</field>
@@ -481,6 +530,7 @@
             <field name="price">30000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_9"/>
         </record>
         <record id="tea_food_51" model="tea.food">
             <field name="name">Mì cay thập cẩm</field>
@@ -490,6 +540,7 @@
             <field name="price">30000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_9"/>
         </record>
         <record id="tea_food_52" model="tea.food">
             <field name="name">Cơm trộn</field>
@@ -499,6 +550,7 @@
             <field name="price">30000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_9"/>
         </record>
         <record id="tea_food_53" model="tea.food">
             <field name="name">Miến trộn</field>
@@ -508,6 +560,7 @@
             <field name="price">30000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_9"/>
         </record>
         <record id="tea_food_54" model="tea.food">
             <field name="name">Cơm cuộn truyền thống</field>
@@ -517,6 +570,7 @@
             <field name="price">30000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_9"/>
         </record>
         <record id="tea_food_55" model="tea.food">
             <field name="name">Mì cay thập cẩm</field>
@@ -526,6 +580,7 @@
             <field name="price">20000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_9"/>
         </record>
         <record id="tea_food_56" model="tea.food">
             <field name="name">GimBap chiên</field>
@@ -535,6 +590,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_9"/>
         </record>
         <record id="tea_food_57" model="tea.food">
             <field name="name">Tokbokki sốt cay</field>
@@ -544,6 +600,7 @@
             <field name="price">20000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_9"/>
         </record>
         <record id="tea_food_58" model="tea.food">
             <field name="name">Tokbokki phô mai</field>
@@ -553,6 +610,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_9"/>
         </record>
         <record id="tea_food_59" model="tea.food">
             <field name="name">Gà giòn phô mai cay</field>
@@ -562,6 +620,7 @@
             <field name="price">50000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
+            <field name="type" ref="2_tea.tea_food_type_9"/>
         </record>
         <record id="tea_food_60" model="tea.food">
             <field name="name">Pizza xúc xích</field>
@@ -571,6 +630,7 @@
             <field name="price">50000</field>
             <field name="price_xl">80000</field>
             <field name="currency_id" ref="base.VND"/>
+            <field name="type" ref="2_tea.tea_food_type_8"/>
         </record>
         <record id="tea_food_62" model="tea.food">
             <field name="name">Pizza gà</field>
@@ -580,6 +640,7 @@
             <field name="price">50000</field>
             <field name="price_xl">80000</field>
             <field name="currency_id" ref="base.VND"/>
+            <field name="type" ref="2_tea.tea_food_type_8"/>
         </record>
         <record id="tea_food_63" model="tea.food">
             <field name="name">Pizza Hải sản</field>
@@ -589,6 +650,7 @@
             <field name="price">50000</field>
             <field name="price_xl">80000</field>
             <field name="currency_id" ref="base.VND"/>
+            <field name="type" ref="2_tea.tea_food_type_8"/>
         </record>
         <record id="tea_food_64" model="tea.food">
             <field name="name">Pizza Thập cẩm</field>
@@ -598,6 +660,7 @@
             <field name="price">60000</field>
             <field name="price_xl">90000</field>
             <field name="currency_id" ref="base.VND"/>
+            <field name="type" ref="2_tea.tea_food_type_8"/>
         </record>
         <record id="tea_food_65" model="tea.food">
             <field name="name">Gà lắc tam vị</field>
@@ -607,6 +670,7 @@
             <field name="price">20000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"/>
+            <field name="type" ref="2_tea.tea_food_type_6"/>
         </record>
         <record id="tea_food_66" model="tea.food">
             <field name="name">Gà giòn phô mai</field>
@@ -616,6 +680,7 @@
             <field name="price">25000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"/>
+            <field name="type" ref="2_tea.tea_food_type_6"/>
         </record>
         <record id="tea_food_67" model="tea.food">
             <field name="name">Xúc xích Đức</field>
@@ -625,6 +690,7 @@
             <field name="price">10000</field>
             <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"/>
+            <field name="type" ref="2_tea.tea_food_type_6"/>
         </record>
 
     </data>

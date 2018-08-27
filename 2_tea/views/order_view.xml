@@ -31,7 +31,7 @@
                     <group string="Món ăn">
                         <field name="mon_an" nolabel="1">
                             <tree string="Danh sách Trà Sữa" editable="bottom">
-                                <field name="mon_an" options="{'no_open' : True}"/>
+                                <field name="mon_an" options="{'no_open' : True}" context="{'default_group_by':'type'}"/>
                                 <field name="sl" />
                                 <field name="price_xl" invisible="1"/>
                                 <field name="size" attrs="{'invisible' : [('price_xl', '=', 0)]}"/>

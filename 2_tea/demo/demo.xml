@@ -63,5 +63,34 @@
         <record id="tea_ban_21" model="tea.ban">
             <field name="name">Số 21</field>
         </record>
+
+        <record id="tea_food_type_1" model="tea.food.type">
+            <field name="name">Trà Sữa MilkTea</field>
+        </record>
+                <record id="tea_food_type_2" model="tea.food.type">
+            <field name="name">Trà Sữa MilkFoam</field>
+        </record>
+        <record id="tea_food_type_3" model="tea.food.type">
+            <field name="name">Blebder</field>
+        </record>
+        <record id="tea_food_type_4" model="tea.food.type">
+            <field name="name">Fruit Tea</field>
+        </record>
+        <record id="tea_food_type_5" model="tea.food.type">
+            <field name="name">Coffee</field>
+        </record>
+        <record id="tea_food_type_6" model="tea.food.type">
+            <field name="name">Ăn Vặt</field>
+        </record>
+        <record id="tea_food_type_7" model="tea.food.type">
+            <field name="name">Topping</field>
+        </record>
+        <record id="tea_food_type_8" model="tea.food.type">
+            <field name="name">Pizza</field>
+        </record>
+        <record id="tea_food_type_9" model="tea.food.type">
+            <field name="name">Món Hàn Quốc</field>
+        </record>
+
     </data>
 </openerp>

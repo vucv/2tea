@@ -18,6 +18,7 @@ class Food(models.Model):
     price_xl = fields.Float("Giá size L")
     color = fields.Integer("Color")
     currency_id = fields.Many2one('res.currency', string='Currency')
+    type = fields.Many2one('tea.food.type', string='Loai')
 
     _defaults = {
         'currency_id': lambda self, cr, uid, c: self.pool['ir.model.data'].xmlid_to_object(cr, uid, 'base.VND', False),
@@ -29,3 +30,10 @@ class Food(models.Model):
         rec = super(Food, self).create(vals)
         return rec
 
+
+class FoodType(models.Model):
+    _name = 'tea.food.type'
+    _description = 'Menu and Food'
+    _rec_name = 'name'
+
+    name = fields.Char("Tên", required=True)

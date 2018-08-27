@@ -92,6 +92,7 @@
         <field name="arch" type="xml">
             <tree string="Danh sách Trà Sữa" class="menu_mon">
                 <field name="name" />
+                <field name="type" />
                 <field name="currency_id" invisible="1"/>
                 <field name="price" widget='monetary' options="{'currency_field': 'currency_id'}" />
                 <field name="price_xl" widget='monetary' options="{'currency_field': 'currency_id'}" />
@@ -105,6 +106,7 @@
         <field name="res_model">tea.food</field>
         <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{'group_by':'type'}</field>
     </record>
 
 </odoo>

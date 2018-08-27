@@ -38,8 +38,9 @@
     ],
     # only loaded in demonstration mode
     'demo': [
-         'demo/ban_status_data.xml',
          'demo/demo.xml',
+         'demo/ban_status_data.xml',
+
     ],
     'installable': True,
     'application': True,

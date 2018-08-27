@@ -2,6 +2,7 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_tea_ban_employee,tea.ban,2_tea.model_tea_ban,2tea_employee,1,1,0,0
 access_tea_ban_status_employee,tea.ban.status,2_tea.model_tea_ban_status,2tea_employee,1,0,0,0
 access_tea_food_employee,tea.food,2_tea.model_tea_food,2tea_employee,1,1,1,0
+access_tea_food_type_employee,tea.food.type,2_tea.model_tea_food_type,2tea_employee,1,0,0,0
 access_tea_km_employee,tea.km,2_tea.model_tea_km,2tea_employee,1,0,0,0
 access_tea_order_mon_employee,tea.order,2_tea.model_tea_order,2tea_employee,1,1,1,1
 access_tea_order_employee,tea.order.mon,2_tea.model_tea_order_mon,2tea_employee,1,1,1,1
