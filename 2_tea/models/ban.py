@@ -62,7 +62,10 @@ class Ban(models.Model):
 
         # In bill
         # test_print("Hello Would!!!")
-        print_bill(self.order_id)
+        try:
+            print_bill(self.order_id)
+        except:
+            print "This is an error message!"
         # L0gic
         self.write({"is_thanh_toan": True})
 
@@ -73,7 +76,11 @@ class Ban(models.Model):
             if mon_an.mon_an.is_print_temp and mon_an.status == 1:
                 for j in range(0, mon_an.sl):
                     n += 1
-                    print_mon_an(mon_an, "(%s/%s)" % (n, self.order_id.sl))
+                    try:
+                        print_mon_an(mon_an, "(%s/%s)" % (n, self.order_id.sl))
+                    except:
+                        print "This is an error message!"
+
 
     @api.one
     def action_reset_so(self):

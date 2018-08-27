@@ -8,14 +8,14 @@ class Food(models.Model):
     _description = 'Menu and Food'
     _rec_name = 'name'
 
-    name = fields.Char("Name", required=True)
+    name = fields.Char("Tên món", required=True)
     name_print = fields.Char("Tên In tem", required=True)
     description = fields.Text("Công thức")
     is_required = fields.Boolean("Món chính")
     is_print_temp = fields.Boolean("In tem lên ly")
     image = fields.Binary(string="Image")
-    price = fields.Float("Giá")
-    price_xl = fields.Float("Giá size XL")
+    price = fields.Float("Giá M")
+    price_xl = fields.Float("Giá size L")
     color = fields.Integer("Color")
     currency_id = fields.Many2one('res.currency', string='Currency')
 

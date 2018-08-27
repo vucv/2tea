@@ -146,8 +146,8 @@
             <field name="name_print">Hong tra thanh long kem cheese</field>
             <field name="is_required" eval="True"/>
             <field name="is_print_temp" eval="True"/>
-            <field name="price">22000</field>
-            <field name="price_xl">25000</field>
+            <field name="price">28000</field>
+            <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
         </record>
         <record id="tea_food_15" model="tea.food">
@@ -155,8 +155,8 @@
             <field name="name_print">Olong Xoai kem cheese</field>
             <field name="is_required" eval="True"/>
             <field name="is_print_temp" eval="True"/>
-            <field name="price">22000</field>
-            <field name="price_xl">25000</field>
+            <field name="price">28000</field>
+            <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
         </record>
         <record id="tea_food_16" model="tea.food">
@@ -164,8 +164,8 @@
             <field name="name_print">Luc tra dâu kem cheese</field>
             <field name="is_required" eval="True"/>
             <field name="is_print_temp" eval="True"/>
-            <field name="price">22000</field>
-            <field name="price_xl">25000</field>
+            <field name="price">28000</field>
+            <field name="price_xl">0</field>
             <field name="currency_id" ref="base.VND"></field>
         </record>
 
