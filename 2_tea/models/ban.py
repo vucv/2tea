@@ -216,7 +216,10 @@ def print_bill(order):
             hDC.TextOut(360, Y, "L")
             hDC.TextOut(450, Y, str(item.mon_an.price_xl))
         else:
-            hDC.TextOut(360, Y, "M")
+            if item.mon_an.price_xl == 0:
+                hDC.TextOut(360, Y, "L+")
+            else:
+                hDC.TextOut(360, Y, "M")
             hDC.TextOut(450, Y, str(item.mon_an.price))
         Y += 40
     hDC.TextOut(0, Y, "                      --------------")
@@ -296,7 +299,10 @@ def print_mon_an(mon_an, note):
     if mon_an.size == 2:
         hDC.TextOut(150, Y, "L")
     else:
-        hDC.TextOut(150, Y, "M")
+        if mon_an.price_xl == 0:
+            hDC.TextOut(150, Y, "L+")
+        else:
+            hDC.TextOut(150, Y, "M")
     hDC.SelectObject(font_h2)
     hDC.TextOut(200, Y + 20, note)
     Y += 50
