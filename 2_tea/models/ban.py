@@ -77,7 +77,7 @@ class Ban(models.Model):
                 for j in range(0, mon_an.sl):
                     n += 1
                     try:
-                        print_mon_an(mon_an, "(%s/%s)" % (n, self.order_id.sl))
+                        print_mon_an(mon_an, "(%s/%s)" % (n, self.order_id.sl), self.order_id.id)
                     except:
                         print "This is an error message!"
 
@@ -247,7 +247,7 @@ def print_bill(order):
     hDC.EndDoc()
 
 
-def print_mon_an(mon_an, note):
+def print_mon_an(mon_an, note, order_id):
     Y = 10
     hDC = win32ui.CreateDC()
     font_h1 = win32ui.CreateFont({
@@ -271,6 +271,9 @@ def print_mon_an(mon_an, note):
     hDC.CreatePrinterDC("Gprinter 2120TU(Label)")
     hDC.StartDoc("XXX")
     hDC.StartPage()
+    hDC.SelectObject(font_normal)
+    hDC.TextOut(50, Y, "Ma: " + str(order_id))
+    Y += 20
     hDC.SelectObject(font_h2)
     p = 0
     if len(mon_an.mon_an.name_print) > 20:

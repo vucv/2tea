@@ -9,9 +9,9 @@
             <form string="Thông tin vị trí bàn phục vụ">
                 <header>
                     <button class="btn btn-primary" attrs="{'invisible':[('order_id','!=', False)]}"
-                            name="action_order" string="Gọi Món" type="object"/>
+                            name="action_order" string="Gọi Món" type="object" context="{'default_ban': id}"/>
                     <button class="btn btn-primary" attrs="{'invisible':['|',('order_id','==', False),('is_thanh_toan','==', True)]}"
-                            name="action_order" string="Gọi Thêm Món" type="object"/>
+                            name="action_order" string="Gọi Thêm Món" type="object" context="{'default_ban': id}"/>
                     <button class="btn btn-primary" attrs="{'invisible':['|',('order_id','==', False),('is_thanh_toan','==', True)]}"
                             name="action_in_tem" string="In Tem" type="object"/>
                     <button class="btn btn-danger" attrs="{'invisible':['|',('order_id','==', False),('is_thanh_toan','==', True)]}"
@@ -82,11 +82,15 @@
                                 </ul>
                             </div>
                             <div class="oe_kanban_content">
-                                <h1 class="text-center">
+                                <h2 class="text-center">
                                     <field name="name"/>
-                                </h1>
+                                </h2>
                                 <t t-if="record.mon_an.raw_value.length != 0">
                                     <strong>Khu vực: </strong><t t-if="record.position != false"><t t-esc="record.position.raw_value[1]"/></t>
+                                    <t t-if="record.order_id.raw_value">
+                                        <strong>     Mã: </strong><t t-esc="record.order_id.raw_value[0]"/>
+                                    </t>
+
                                     <div>
                                         <table class="table table-dark">
                                             <thead>
