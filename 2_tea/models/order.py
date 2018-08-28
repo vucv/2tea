@@ -16,7 +16,7 @@ class Order(models.Model):
     mon_an = fields.One2many("tea.order.mon", "order_id", "Món")
     description = fields.Text("Ghi Chú")
     color = fields.Integer("Color")
-    price_receive = fields.Float("Tiền Nhận", default=0)
+    # price_receive = fields.Float("Tiền Nhận", default=0)
     price = fields.Float("Thành tiền")
     currency_id = fields.Many2one('res.currency', string='Currency')
     is_thanh_toan = fields.Boolean("Đã thanh toán")
