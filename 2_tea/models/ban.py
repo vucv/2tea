@@ -91,14 +91,14 @@ class Ban(models.Model):
 
     @api.multi
     def write(self, vals):
-        if "status" in vals:
-            for item in self:
-                if not item.is_thanh_toan and vals.get("status", 0) == 4:
-                    warning = {'title': 'Cảnh báo!', 'message': 'Tính tiền trước khi chuyển qua trạng thái này'}
-                    return {'warning': warning}
-                if not item.mon_an and vals.get("status", 0) != 1:
-                    warning = {'title': 'Cảnh báo!', 'message': 'Chưa gọi món'}
-                    return {'warning': warning}
+       # if "status" in vals:
+            #for item in self:
+                #if not item.is_thanh_toan and vals.get("status", 0) == 4:
+                    #warning = {'title': 'Cảnh báo!', 'message': 'Tính tiền trước khi chuyển qua trạng thái này'}
+                    #return {'warning': warning}
+                #if not item.mon_an and vals.get("status", 0) != 1:
+                    #warning = {'title': 'Cảnh báo!', 'message': 'Chưa gọi món'}
+                    #return {'warning': warning}
         rec = super(Ban, self).write(vals)
         for item in self:
             if vals.get("status", 0) == 3:
