@@ -1,0 +1,33 @@
+body{
+    width: 72.1mm;
+    display: inline-block;
+}
+.orderlines .size{
+  display: inline-block;
+  width: 10%;
+  text-align:center;
+}
+.orderlines .sl{
+  display: inline-block;
+  width: 10%;
+  text-align:center;
+}
+#order{
+  font-size: 12px;
+}
+#order .price{
+  line-height: 15px !important;
+}
+#order ul{
+  margin: 0;
+  padding: 0;
+}
+.order .summary .line{float: right; margin-right:15px; margin-left: 15px; padding-top:5px; border-top: solid 2px; border-color:#777;}
+.order .summary .total{font-size: 22px;}
+.order .summary .line .subentry{font-size: 16px; font-weight: normal; text-align: right;}
+.order .summary .fidpoints{position: absolute; left: 20px; padding: 10px; color: #6EC89B; background: rgba(110, 200, 155, 0.17); border-radius: 3px;}
+.order .orderline{width:100%;margin:0px;padding-top:3px;padding-bottom:10px;/* padding-left:15px; */padding-right:15px;cursor: pointer;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;-ms-box-sizing: border-box;box-sizing: border-box;-webkit-transition: background 250ms ease-in-out;-moz-transition: background 250ms ease-in-out;transition: background 250ms ease-in-out;}
+.order .orderline:active{background: rgba(140,143,183,0.05); -webkit-transition: background 50ms ease-in-out; -moz-transition: background 50ms ease-in-out; transition: background 50ms ease-in-out;}
+.order .orderline .product-name{padding:0; display:inline-block; font-weight: bold; width:60%; overflow:hidden; text-overflow: ellipsis;}
+.order .orderline .price{padding:0; font-weight: bold; float:right; line-height: 23px;}
+.order .orderline .info-list{color: #888; margin-left:0px;}

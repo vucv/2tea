@@ -7,7 +7,7 @@ class Order(models.Model):
     _description = 'Order Food'
     _rec_name = 'position'
 
-    ban = fields.Many2one("tea.ban", "Bàn", domain="[('status', '=', 1)]", required=True)
+    ban = fields.Many2one("tea.ban", "Bàn", domain="[('status', '=', 1)]")
     # create_date = fields.datetime("Ngày", readonly=True)
     km = fields.Many2one("tea.km", "Chương Trình KM", domain="[('active', '=', True)]")
     percent = fields.Integer("Giảm giá", related="km.percent")

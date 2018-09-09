@@ -77,7 +77,7 @@
             <field name="name">Fruit Tea</field>
         </record>
         <record id="tea_food_type_5" model="tea.food.type">
-            <field name="name">Coffee</field>
+            <field name="name">Coffee + Nước ngọt</field>
         </record>
         <record id="tea_food_type_6" model="tea.food.type">
             <field name="name">Ăn Vặt</field>
