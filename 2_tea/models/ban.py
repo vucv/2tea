@@ -86,7 +86,7 @@ class Ban(models.Model):
     def action_reset_so(self):
         # Change status to 0
         self.order_id.write({"is_thanh_toan": True})
-        for item in self.order_id.mon_an:
+        for item in self.mon_an:
             item.write({"is_thanh_toan": True, "status": 3})
         self.write({"status": self.env.ref('2_tea.0').id, "order_id": False, "is_thanh_toan": False})
         return {'type': 'ir.actions.act_close_wizard_and_reload_view'}
